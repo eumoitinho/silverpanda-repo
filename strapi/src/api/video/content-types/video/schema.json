@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "videos",
+  "info": {
+    "singularName": "video",
+    "pluralName": "videos",
+    "displayName": "Video",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "youtubeId": {
+      "type": "string"
+    },
+    "youtubeUrl": {
+      "type": "string"
+    },
+    "year": {
+      "type": "string"
+    },
+    "releaseYear": {
+      "type": "integer"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Music Videos",
+        "PGTV",
+        "Sets",
+        "Other"
+      ],
+      "default": "Music Videos",
+      "required": true
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "thumbnailUrl": {
+      "type": "string"
+    },
+    "credits": {
+      "type": "text"
+    },
+    "releaseDate": {
+      "type": "date"
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}
+

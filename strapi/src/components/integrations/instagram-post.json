@@ -1,0 +1,49 @@
+{
+  "collectionName": "components_integrations_instagram_posts",
+  "info": {
+    "displayName": "Instagram Post",
+    "description": "Seleção de post do Instagram com mídia e metadados"
+  },
+  "attributes": {
+    "permalink": {
+      "type": "string"
+    },
+    "caption": {
+      "type": "text"
+    },
+    "timestamp": {
+      "type": "datetime"
+    },
+    "likes": {
+      "type": "integer"
+    },
+    "comments": {
+      "type": "integer"
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "mediaUrl": {
+      "type": "string"
+    },
+    "mediaType": {
+      "type": "enumeration",
+      "enum": [
+        "image",
+        "video",
+        "carousel"
+      ],
+      "default": "image"
+    },
+    "notes": {
+      "type": "text"
+    }
+  }
+}
+

@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tour_dates",
+  "info": {
+    "singularName": "tour-date",
+    "pluralName": "tour-dates",
+    "displayName": "Tour Date",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "city": {
+      "type": "string",
+      "required": true
+    },
+    "country": {
+      "type": "string",
+      "required": true
+    },
+    "venue": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string"
+    },
+    "ticketUrl": {
+      "type": "string"
+    },
+    "externalUrl": {
+      "type": "string"
+    }
+  }
+}
+

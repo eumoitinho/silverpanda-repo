@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silver Panda</title>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="navigation__list">
+            <a href="#" class="navigation__list__link" data-page="music">MUSIC</a>
+            <a href="#" class="navigation__list__link" data-page="tour">TOUR</a>
+            <a href="#" class="navigation__list__link" data-page="videos">VIDEOS</a>
+            <a href="#" class="navigation__list__link" data-page="press">PRESS</a>
+            <a href="#" class="navigation__list__link" data-page="collaborations">COLLABORATIONS</a>
+            <a href="#" class="navigation__list__link" data-page="info">INFO</a>
+        </div>
+        <div class="navigation__toggle">+</div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <div class="content" data-template="home" id="home" style="display: flex;">
+            <div class="home__hero">
+                <div class="home__hero__background" id="heroBackground"></div>
+                <div class="home__hero__title" style="cursor: pointer;" onclick="app.navigateToPage('home')">
+                    <img id="heroLogo" src="" alt="Silver Panda Logo" class="home__hero__logo" style="display: none;">
+                    <h1 id="heroTitle" class="home__hero__title-fallback">Silver Panda</h1>
+                    <p class="home__hero__subtitle" id="heroSubtitle" style="display: none;"></p>
+                </div>
+                <div class="home__hero__circle"></div>
+            </div>
+        </div>
+
+        <!-- Music Page -->
+        <div class="content" data-template="music" id="music" style="display: none;">
+            <div class="music__section" id="releases">
+                <div class="music__section__wrapper" id="musicGrid">
+                    <div class="music__loading">Loading music...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tour Page -->
+        <div class="content" data-template="tour" id="tour" style="display: none;">
+            <div class="tour__section">
+                <div class="tour__header">
+                    <button class="tour__toggle" id="tourToggle">↑ Hide Details</button>
+                    <div class="tour__source" id="tourSource">Resident Advisor</div>
+                </div>
+                <div class="tour__table" id="tourTable">
+                    <div class="section__loading">Loading tour dates...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Videos Page -->
+        <div class="content" data-template="videos" id="videos" style="display: none;">
+            <div class="videos__section">
+                <div class="videos__header">
+                    <div class="videos__tabs">
+                        <span class="videos__tab active">Music Videos</span>
+                        <span class="videos__tab">PGTV</span>
+                        <span class="videos__tab">Sets</span>
+                        <span class="videos__tab">Other</span>
+                    </div>
+                </div>
+                <div class="videos__grid" id="videosGrid">
+                    <div class="section__loading">Loading videos...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video Modal -->
+        <div class="video__modal" id="videoModal" style="display: none;">
+            <div class="video__modal__back">← Back</div>
+            <div class="video__modal__content">
+                <div class="video__modal__player" id="videoPlayer"></div>
+                <div class="video__modal__info">
+                    <div class="video__modal__title" id="modalTitle"></div>
+                    <div class="video__modal__year" id="modalYear"></div>
+                    <div class="video__modal__credits" id="modalCredits"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Press Page -->
+        <div class="content" data-template="press" id="press" style="display: none;">
+            <div class="press__section">
+                <div class="press__header">
+                    <h2>Covers / Index</h2>
+                </div>
+                <div class="press__covers" id="pressGrid">
+                    <div class="section__loading">Loading press features...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collaborations Page -->
+        <div class="content" data-template="collaborations" id="collaborations" style="display: none;">
+            <div class="collaborations__section">
+                <div class="collaborations__header">
+                    <h2>Instagram Feed</h2>
+                </div>
+                <div class="collaborations__grid" id="instagramGrid">
+                    <div class="section__loading">Loading posts...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Page -->
+        <div class="content" data-template="info" id="info" style="display: none;">
+            <div class="info__section">
+                <div class="info__header">
+                    <h2>Biography / Contact</h2>
+                </div>
+                <div class="info__content">
+                    <div class="info__image">
+                        <img id="infoImage" src="/photos/photo2.png" alt="Silver Panda">
+                    </div>
+                    <div class="info__text" id="infoText">
+                        <p>In an impressively short time, Silver Panda has garnered support from some of the biggest names in the industry, catapulting their profile to epic heights. Their collaborative work with artists like John Summit, Space Motion, and Sevenn has led to significant achievements, including their music reaching the #1 spot on Beatport's Overall Chart.</p>
+                        <p>In 2024, Silver Panda achieved a major milestone with the #1 top-selling melodic techno track on Beatport and claimed the #1 spot for track support in 2024 via 1001Tracklists stats. Their innovative sound has earned them a place among Beatport's top 10 melodic techno artists, with this notoriety fueling a world tour in 2024 featuring performances at clubs and festivals across the US, South America, Europe, and Asia.</p>
+                        <p>In addition to their creative output, Silver Panda has made strides in shaping the industry with their label, Panda Lab Records. The label rose to become the #4 melodic techno label on the Beatport charts in 2023, highlighting the duo's exceptional blend of creativity, collaboration, and entrepreneurship.</p>
+                    </div>
+                </div>
+                <div class="info__footer">
+                    <div class="info__footer__credit">Design by ANGELO</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
+

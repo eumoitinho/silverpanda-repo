@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "collaborations_pages",
+  "info": {
+    "singularName": "collaborations-page",
+    "pluralName": "collaborations-pages",
+    "displayName": "Collaborations Page",
+    "description": "Feed de posts para a seção COLLABORATIONS"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "instagramPosts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "integrations.instagram-post"
+    }
+  }
+}
+

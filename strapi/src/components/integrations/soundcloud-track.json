@@ -1,0 +1,48 @@
+{
+  "collectionName": "components_integrations_soundcloud_tracks",
+  "info": {
+    "displayName": "SoundCloud Track",
+    "description": "Seleção de faixa do SoundCloud via ID ou permalink"
+  },
+  "attributes": {
+    "trackId": {
+      "type": "string"
+    },
+    "permalinkUrl": {
+      "type": "string"
+    },
+    "manualTitle": {
+      "type": "string"
+    },
+    "manualArtist": {
+      "type": "string"
+    },
+    "manualLabel": {
+      "type": "string"
+    },
+    "manualReleaseDate": {
+      "type": "date"
+    },
+    "manualDuration": {
+      "type": "integer"
+    },
+    "manualArtwork": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "manualArtworkUrl": {
+      "type": "string"
+    },
+    "manualExternalUrl": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "text"
+    }
+  }
+}
+

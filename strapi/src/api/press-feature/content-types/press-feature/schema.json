@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "press_features",
+  "info": {
+    "singularName": "press-feature",
+    "pluralName": "press-features",
+    "displayName": "Press Feature",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "publication": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    },
+    "publishedAt": {
+      "type": "datetime"
+    },
+    "link": {
+      "type": "string"
+    },
+    "articleUrl": {
+      "type": "string"
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "imageUrl": {
+      "type": "string"
+    }
+  }
+}
+

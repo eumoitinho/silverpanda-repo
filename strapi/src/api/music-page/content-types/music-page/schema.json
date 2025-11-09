@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "music_pages",
+  "info": {
+    "singularName": "music-page",
+    "pluralName": "music-pages",
+    "displayName": "Music Page",
+    "description": "Curadoria de faixas para a seção MUSIC"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "selectedSpotifyTrackIds": {
+      "type": "json"
+    },
+    "selectedSoundcloudTrackIds": {
+      "type": "json"
+    },
+    "spotifyTracks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "integrations.spotify-track"
+    },
+    "soundcloudTracks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "integrations.soundcloud-track"
+    }
+  }
+}
+

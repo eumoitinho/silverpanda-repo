@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_contact_link_contact_links",
+  "info": {
+    "displayName": "Contact Link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}
+

@@ -1,0 +1,56 @@
+{
+  "kind": "singleType",
+  "collectionName": "abouts",
+  "info": {
+    "singularName": "about",
+    "pluralName": "abouts",
+    "displayName": "About",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "paragraph1": {
+      "type": "text"
+    },
+    "paragraph2": {
+      "type": "text"
+    },
+    "paragraph3": {
+      "type": "text"
+    },
+    "contactManagement": {
+      "type": "string"
+    },
+    "contactManagementLink": {
+      "type": "string"
+    },
+    "contactBookings": {
+      "type": "string"
+    },
+    "contactBookingsLink": {
+      "type": "string"
+    },
+    "credit": {
+      "type": "string",
+      "default": "Design by ANGELO"
+    }
+  }
+}
+

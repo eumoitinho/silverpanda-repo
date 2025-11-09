@@ -1,0 +1,49 @@
+{
+  "collectionName": "components_integrations_spotify_tracks",
+  "info": {
+    "displayName": "Spotify Track",
+    "description": "Seleciona uma faixa do Spotify pelo ID e define fallback manual"
+  },
+  "attributes": {
+    "trackId": {
+      "type": "string",
+      "required": false
+    },
+    "manualTitle": {
+      "type": "string"
+    },
+    "manualArtist": {
+      "type": "string"
+    },
+    "manualAlbum": {
+      "type": "string"
+    },
+    "manualDuration": {
+      "type": "integer"
+    },
+    "manualReleaseDate": {
+      "type": "date"
+    },
+    "manualArtwork": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "manualArtworkUrl": {
+      "type": "string"
+    },
+    "manualExternalUrl": {
+      "type": "string"
+    },
+    "manualPreviewUrl": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "text"
+    }
+  }
+}
+
