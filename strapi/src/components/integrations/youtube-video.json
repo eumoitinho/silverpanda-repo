@@ -1,0 +1,64 @@
+{
+  "collectionName": "components_integrations_youtube_videos",
+  "info": {
+    "displayName": "YouTube Video",
+    "description": "Seleciona um vídeo do YouTube pelo ID ou URL e define fallback manual"
+  },
+  "attributes": {
+    "videoId": {
+      "type": "string",
+      "required": false
+    },
+    "youtubeUrl": {
+      "type": "string"
+    },
+    "manualTitle": {
+      "type": "string"
+    },
+    "manualDescription": {
+      "type": "text"
+    },
+    "manualChannelTitle": {
+      "type": "string"
+    },
+    "manualPublishedAt": {
+      "type": "datetime"
+    },
+    "manualThumbnailUrl": {
+      "type": "string"
+    },
+    "manualDuration": {
+      "type": "string"
+    },
+    "manualViewCount": {
+      "type": "biginteger"
+    },
+    "manualLikeCount": {
+      "type": "biginteger"
+    },
+    "manualTags": {
+      "type": "json"
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Music Videos",
+        "PGTV",
+        "Sets",
+        "Other"
+      ],
+      "default": "Music Videos"
+    },
+    "notes": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "videos_pages",
+  "info": {
+    "singularName": "videos-page",
+    "pluralName": "videos-pages",
+    "displayName": "Videos Page",
+    "description": "Curadoria de vídeos do YouTube para a seção VIDEOS"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "selectedYouTubeVideoIds": {
+      "type": "json"
+    },
+    "youtubeVideos": {
+      "type": "component",
+      "repeatable": true,
+      "component": "integrations.youtube-video"
+    }
+  }
+}

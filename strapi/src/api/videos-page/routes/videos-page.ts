@@ -2,28 +2,27 @@ export default {
   routes: [
     {
       method: 'GET',
-      path: '/collaborations-page',
-      handler: 'collaborations-page.find',
+      path: '/videos-page',
+      handler: 'videos-page.find',
       config: {
         auth: false,
       },
     },
     {
       method: 'PUT',
-      path: '/collaborations-page',
-      handler: 'collaborations-page.update',
+      path: '/videos-page',
+      handler: 'videos-page.update',
       config: {
         auth: false,
       },
     },
     {
       method: 'GET',
-      path: '/collaborations-page/available-posts',
-      handler: 'collaborations-page.getAvailablePosts',
+      path: '/videos-page/available-videos',
+      handler: 'videos-page.getAvailableVideos',
       config: {
         auth: false,
       },
     },
   ],
 };
-
