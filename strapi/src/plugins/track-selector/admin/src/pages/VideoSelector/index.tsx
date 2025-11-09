@@ -5,28 +5,26 @@ import {
   Typography,
   Grid,
   Card,
-  Checkbox,
   TextInput,
   Flex,
   Alert,
   Loader,
 } from '@strapi/design-system';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
-import { Check, Search } from '@strapi/icons';
+import { Check, Search, Play } from '@strapi/icons';
 
-interface Track {
+interface Video {
   id: string;
   title: string;
-  artist: string;
-  album?: string;
-  artwork?: string | null;
-  externalUrl?: string | null;
+  description: string;
+  channelTitle: string;
+  publishedAt: string | null;
+  thumbnailUrl: string | null;
+  duration: string | null;
+  viewCount: number | null;
 }
 
-// These functions will be defined inside the component to use useFetchClient
-
 const getAuthToken = () => {
-  // Try to get token from localStorage or sessionStorage
   if (typeof window !== 'undefined') {
     return localStorage.getItem('jwtToken') || sessionStorage.getItem('jwtToken') || '';
   }
@@ -43,101 +41,94 @@ const getBackendURL = () => {
   return '';
 };
 
-const TrackSelector: React.FC = () => {
-  const [provider, setProvider] = useState<'spotify' | 'soundcloud'>('spotify');
-  const [selectedSpotify, setSelectedSpotify] = useState<string[]>([]);
-  const [selectedSoundcloud, setSelectedSoundcloud] = useState<string[]>([]);
+const VideoSelector: React.FC = () => {
+  const [selectedVideos, setSelectedVideos] = useState<string[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [notification, setNotification] = useState<{ type: 'success' | 'error' | 'warning'; message: string } | null>(null);
+  const [channelId, setChannelId] = useState('');
   const queryClient = useQueryClient();
 
-  const fetchTracks = async (provider: string): Promise<Track[]> => {
+  const fetchVideos = async (channelId: string): Promise<Video[]> => {
     try {
       const token = getAuthToken();
       const backendURL = getBackendURL();
-      const url = `${backendURL}/api/music-page/available-tracks?provider=${provider}`;
-      console.log('[TrackSelector] Fetching tracks from:', url);
-      
+      const url = `${backendURL}/api/videos-page/available-videos?channelId=${channelId}`;
+      console.log('[VideoSelector] Fetching videos from:', url);
+
       const response = await fetch(url, {
         headers: {
           'Content-Type': 'application/json',
           ...(token && { Authorization: `Bearer ${token}` }),
         },
       });
-      
+
       if (!response.ok) {
         const errorText = await response.text();
-        console.error('[TrackSelector] Failed to fetch tracks:', response.status, errorText);
-        throw new Error(`Failed to fetch tracks: ${response.status} ${errorText}`);
+        console.error('[VideoSelector] Failed to fetch videos:', response.status, errorText);
+        throw new Error(`Failed to fetch videos: ${response.status} ${errorText}`);
       }
-      
+
       const data = await response.json();
-      console.log('[TrackSelector] Received tracks data:', data);
+      console.log('[VideoSelector] Received videos data:', data);
       return data.data || [];
     } catch (error) {
-      console.error('[TrackSelector] Error in fetchTracks:', error);
+      console.error('[VideoSelector] Error in fetchVideos:', error);
       throw error;
     }
   };
 
-  const fetchMusicPage = async () => {
+  const fetchVideosPage = async () => {
     const token = getAuthToken();
     const backendURL = getBackendURL();
-    const response = await fetch(`${backendURL}/api/music-page`, {
+    const response = await fetch(`${backendURL}/api/videos-page`, {
       headers: {
         'Content-Type': 'application/json',
         ...(token && { Authorization: `Bearer ${token}` }),
       },
     });
-    if (!response.ok) throw new Error('Failed to fetch music page');
+    if (!response.ok) throw new Error('Failed to fetch videos page');
     const data = await response.json();
     return data.data || {};
   };
 
-  const updateMusicPage = async (selectedSpotifyIds: string[], selectedSoundcloudIds: string[]) => {
+  const updateVideosPage = async (selectedVideoIds: string[]) => {
     try {
       const token = getAuthToken();
       const backendURL = getBackendURL();
-      const musicPage = await fetchMusicPage();
-      
-      // Clean up the data - remove system fields and existing components
-      const { 
-        id, 
-        documentId, 
-        createdAt, 
-        updatedAt, 
-        publishedAt, 
-        createdBy, 
+      const videosPage = await fetchVideosPage();
+
+      const {
+        id,
+        documentId,
+        createdAt,
+        updatedAt,
+        publishedAt,
+        createdBy,
         updatedBy,
-        spotifyTracks, // Remove existing components - will be created by lifecycle
-        soundcloudTracks, // Remove existing components - will be created by lifecycle
-        ...cleanData 
-      } = musicPage;
-      
-      // Build payload without undefined fields
+        youtubeVideos,
+        ...cleanData
+      } = videosPage;
+
       const payloadData: any = {
         ...cleanData,
-        selectedSpotifyTrackIds: selectedSpotifyIds,
-        selectedSoundcloudTrackIds: selectedSoundcloudIds,
+        selectedYouTubeVideoIds: selectedVideoIds,
       };
-      
-      // Remove undefined fields
+
       Object.keys(payloadData).forEach((key) => {
         if (payloadData[key] === undefined) {
           delete payloadData[key];
         }
       });
-      
+
       const payload = {
         data: payloadData,
       };
-      
-      console.log('[TrackSelector] Updating music page with:', {
-        selectedSpotifyIds: selectedSpotifyIds.length,
-        selectedSoundcloudIds: selectedSoundcloudIds.length,
+
+      console.log('[VideoSelector] Updating videos page with:', {
+        selectedVideoIds: selectedVideoIds.length,
       });
-      
-      const response = await fetch(`${backendURL}/api/music-page`, {
+
+      const response = await fetch(`${backendURL}/api/videos-page`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -145,25 +136,18 @@ const TrackSelector: React.FC = () => {
         },
         body: JSON.stringify(payload),
       });
-      
+
       if (!response.ok) {
         const errorText = await response.text();
-        console.error('[TrackSelector] Update failed:', response.status, errorText);
-        let errorMessage = 'Failed to update music page';
-        try {
-          const errorJson = JSON.parse(errorText);
-          errorMessage = errorJson.error?.message || errorText;
-        } catch {
-          errorMessage = errorText || errorMessage;
-        }
-        throw new Error(errorMessage);
+        console.error('[VideoSelector] Update failed:', response.status, errorText);
+        throw new Error(errorText || 'Failed to update videos page');
       }
-      
+
       const result = await response.json();
-      console.log('[TrackSelector] Update successful:', result);
+      console.log('[VideoSelector] Update successful:', result);
       return result;
     } catch (error) {
-      console.error('[TrackSelector] Error in updateMusicPage:', error);
+      console.error('[VideoSelector] Error in updateVideosPage:', error);
       throw error;
     }
   };
@@ -173,102 +157,82 @@ const TrackSelector: React.FC = () => {
     setTimeout(() => setNotification(null), 5000);
   };
 
-  const { data: musicPage, isLoading: loadingPage } = useQuery('music-page', fetchMusicPage);
-  const { data: spotifyTracks = [], isLoading: loadingSpotify, error: spotifyError } = useQuery(
-    ['tracks', 'spotify'],
-    () => fetchTracks('spotify'),
-    { 
-      enabled: provider === 'spotify',
+  const { data: videosPage, isLoading: loadingPage } = useQuery('videos-page', fetchVideosPage);
+  const { data: videos = [], isLoading: loadingVideos, error: videosError, refetch } = useQuery(
+    ['videos', channelId],
+    () => fetchVideos(channelId),
+    {
+      enabled: false,
       retry: 1,
-      onError: (error) => {
-        console.error('[TrackSelector] Spotify tracks error:', error);
+      onError: (error: any) => {
+        console.error('[VideoSelector] Videos error:', error);
+        showNotification('error', error?.message || 'Failed to load videos');
       },
     }
   );
-  const { data: soundcloudTracks = [], isLoading: loadingSoundcloud, error: soundcloudError } = useQuery(
-    ['tracks', 'soundcloud'],
-    () => fetchTracks('soundcloud'),
-    { 
-      enabled: provider === 'soundcloud',
-      retry: 1,
-      onError: (error) => {
-        console.error('[TrackSelector] SoundCloud tracks error:', error);
-      },
-    }
-  );
-
-  useEffect(() => {
-    console.log('[TrackSelector] State:', {
-      provider,
-      spotifyTracks: spotifyTracks.length,
-      soundcloudTracks: soundcloudTracks.length,
-      loadingSpotify,
-      loadingSoundcloud,
-      spotifyError,
-      soundcloudError,
-    });
-  }, [provider, spotifyTracks, soundcloudTracks, loadingSpotify, loadingSoundcloud, spotifyError, soundcloudError]);
 
   const updateMutation = useMutation(
-    () => updateMusicPage(selectedSpotify, selectedSoundcloud),
+    () => updateVideosPage(selectedVideos),
     {
       onSuccess: () => {
-        queryClient.invalidateQueries('music-page');
-        showNotification('success', 'Tracks saved successfully!');
+        queryClient.invalidateQueries('videos-page');
+        showNotification('success', 'Videos saved successfully!');
       },
       onError: (error: any) => {
-        showNotification('error', error?.message || 'Failed to save tracks');
+        showNotification('error', error?.message || 'Failed to save videos');
       },
     }
   );
 
   useEffect(() => {
-    if (musicPage) {
-      setSelectedSpotify(musicPage.selectedSpotifyTrackIds || []);
-      setSelectedSoundcloud(musicPage.selectedSoundcloudTrackIds || []);
+    if (videosPage) {
+      setSelectedVideos(videosPage.selectedYouTubeVideoIds || []);
     }
-  }, [musicPage]);
+  }, [videosPage]);
 
-  const currentTracks = provider === 'spotify' ? spotifyTracks : soundcloudTracks;
-  const isLoading = loadingSpotify || loadingSoundcloud || loadingPage;
-  const selectedTracks = provider === 'spotify' ? selectedSpotify : selectedSoundcloud;
-  const setSelectedTracks = provider === 'spotify' ? setSelectedSpotify : setSelectedSoundcloud;
-
-  const filteredTracks = currentTracks.filter((track) => {
+  const filteredVideos = videos.filter((video) => {
     if (!searchTerm) return true;
     const search = searchTerm.toLowerCase();
     return (
-      track.title.toLowerCase().includes(search) ||
-      track.artist.toLowerCase().includes(search) ||
-      (track.album && track.album.toLowerCase().includes(search))
+      video.title.toLowerCase().includes(search) ||
+      video.description.toLowerCase().includes(search) ||
+      video.channelTitle.toLowerCase().includes(search)
     );
   });
 
-  const handleToggleTrack = (trackId: string) => {
-    setSelectedTracks((prev) => {
-      if (prev.includes(trackId)) {
-        return prev.filter((id) => id !== trackId);
+  const handleToggleVideo = (videoId: string) => {
+    setSelectedVideos((prev) => {
+      if (prev.includes(videoId)) {
+        return prev.filter((id) => id !== videoId);
       }
-      return [...prev, trackId];
+      return [...prev, videoId];
     });
   };
 
   const handleSelectAll = () => {
-    setSelectedTracks(filteredTracks.map((track) => track.id));
+    setSelectedVideos(filteredVideos.map((video) => video.id));
   };
 
   const handleDeselectAll = () => {
-    setSelectedTracks([]);
+    setSelectedVideos([]);
+  };
+
+  const handleLoadVideos = () => {
+    if (channelId.trim()) {
+      refetch();
+    } else {
+      showNotification('warning', 'Please enter a YouTube channel ID');
+    }
   };
 
   return (
       <Box>
         <Box paddingBottom={4}>
           <Typography variant="beta" as="h2">
-            Track Selector
+            Video Selector
           </Typography>
           <Typography variant="omega" textColor="neutral600" as="p">
-            Select tracks to display on the Music page
+            Select YouTube videos to display on the Videos page
           </Typography>
         </Box>
         {notification && (
@@ -285,104 +249,107 @@ const TrackSelector: React.FC = () => {
         )}
         <Box padding={4}>
           <Flex direction="column" gap={6}>
-            {/* Provider Selection */}
+            {/* Channel ID Input */}
             <Box>
               <Typography variant="sigma" textColor="neutral600" marginBottom={3}>
-                Select Provider
+                YouTube Channel ID
               </Typography>
-              <Flex gap={2}>
+              <Flex gap={3} alignItems="flex-end">
+                <Box flex="1">
+                  <TextInput
+                    placeholder="Enter YouTube channel ID (e.g., UCxxxxxx)"
+                    value={channelId}
+                    onChange={(e: any) => setChannelId(e.target.value)}
+                    size="M"
+                  />
+                </Box>
                 <Button
-                  variant={provider === 'spotify' ? 'default' : 'tertiary'}
-                  onClick={() => setProvider('spotify')}
-                  size="L"
-                  startIcon={provider === 'spotify' ? <Check /> : null}
+                  variant="default"
+                  onClick={handleLoadVideos}
+                  disabled={loadingVideos || !channelId.trim()}
                 >
-                  Spotify
-                </Button>
-                <Button
-                  variant={provider === 'soundcloud' ? 'default' : 'tertiary'}
-                  onClick={() => setProvider('soundcloud')}
-                  size="L"
-                  startIcon={provider === 'soundcloud' ? <Check /> : null}
-                >
-                  SoundCloud
+                  Load Videos
                 </Button>
               </Flex>
             </Box>
 
             {/* Search and Actions */}
-            <Box>
-              <Flex gap={3} alignItems="flex-end">
-                <Box flex="1">
-                  <TextInput
-                    placeholder="Search by title, artist, or album..."
-                    value={searchTerm}
-                    onChange={(e: any) => setSearchTerm(e.target.value)}
-                    startAction={<Search />}
-                    size="M"
-                  />
-                </Box>
-                <Button 
-                  variant="secondary" 
-                  onClick={handleSelectAll}
-                  disabled={filteredTracks.length === 0 || selectedTracks.length === filteredTracks.length}
-                >
-                  Select All ({filteredTracks.length})
-                </Button>
-                <Button 
-                  variant="secondary" 
-                  onClick={handleDeselectAll}
-                  disabled={selectedTracks.length === 0}
-                >
-                  Clear Selection
-                </Button>
-              </Flex>
-            </Box>
+            {videos.length > 0 && (
+              <Box>
+                <Flex gap={3} alignItems="flex-end">
+                  <Box flex="1">
+                    <TextInput
+                      placeholder="Search by title, description, or channel..."
+                      value={searchTerm}
+                      onChange={(e: any) => setSearchTerm(e.target.value)}
+                      startAction={<Search />}
+                      size="M"
+                    />
+                  </Box>
+                  <Button
+                    variant="secondary"
+                    onClick={handleSelectAll}
+                    disabled={filteredVideos.length === 0 || selectedVideos.length === filteredVideos.length}
+                  >
+                    Select All ({filteredVideos.length})
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    onClick={handleDeselectAll}
+                    disabled={selectedVideos.length === 0}
+                  >
+                    Clear Selection
+                  </Button>
+                </Flex>
+              </Box>
+            )}
 
-            {(spotifyError || soundcloudError) && (
+            {videosError && (
               <Box padding={2} marginBottom={4}>
-                <Alert closeLabel="Close" title="Error loading tracks" variant="danger">
-                  {spotifyError?.message || soundcloudError?.message || 'Failed to load tracks. Check console for details.'}
+                <Alert closeLabel="Close" title="Error loading videos" variant="danger">
+                  {(videosError as any)?.message || 'Failed to load videos. Check console for details.'}
                 </Alert>
               </Box>
             )}
-            {isLoading ? (
+            {loadingVideos ? (
               <Box padding={8} textAlign="center">
-                <Loader>Loading tracks...</Loader>
+                <Loader>Loading videos...</Loader>
               </Box>
-            ) : filteredTracks.length === 0 ? (
-              <Alert closeLabel="Close" title="No tracks found">
-                {searchTerm 
-                  ? 'No tracks match your search.' 
-                  : `No tracks available. Provider: ${provider}, Total tracks: ${currentTracks.length}, Loading: ${isLoading ? 'yes' : 'no'}`}
+            ) : filteredVideos.length === 0 && videos.length === 0 ? (
+              <Alert closeLabel="Close" title="No videos loaded">
+                Enter a YouTube channel ID and click "Load Videos" to get started.
+              </Alert>
+            ) : filteredVideos.length === 0 ? (
+              <Alert closeLabel="Close" title="No videos found">
+                No videos match your search.
               </Alert>
             ) : (
               <>
                 {/* Summary */}
-                <Box 
-                  padding={3} 
-                  background="neutral100" 
+                <Box
+                  padding={3}
+                  background="neutral100"
                   borderRadius="4px"
                   style={{ border: '1px solid #e0e0e0' }}
                 >
                   <Flex justifyContent="space-between" alignItems="center">
                     <Typography variant="omega" fontWeight="semiBold">
-                      {filteredTracks.length} track{filteredTracks.length !== 1 ? 's' : ''} available
+                      {filteredVideos.length} video{filteredVideos.length !== 1 ? 's' : ''} available
                     </Typography>
-                    {selectedTracks.length > 0 && (
+                    {selectedVideos.length > 0 && (
                       <Typography variant="omega" textColor="primary600" fontWeight="semiBold">
-                        {selectedTracks.length} selected
+                        {selectedVideos.length} selected
                       </Typography>
                     )}
                   </Flex>
                 </Box>
 
-                {/* Tracks Grid */}
+                {/* Videos Grid */}
                 <Grid.Root gap={4} colCount={4}>
-                  {filteredTracks.map((track) => {
-                    const isSelected = selectedTracks.includes(track.id);
+                  {filteredVideos.map((video) => {
+                    const isSelected = selectedVideos.includes(video.id);
                     return (
-                      <Grid.Item key={track.id} col={1} xs={12} s={6} m={4} xl={3}>
+                      <Grid.Item key={video.id} col={1} xs={12} s={6} m={4} xl={3}>
                         <Card
                           padding={0}
                           style={{
@@ -394,7 +361,7 @@ const TrackSelector: React.FC = () => {
                             transition: 'all 0.2s ease',
                             boxShadow: isSelected ? '0 4px 12px rgba(73, 69, 255, 0.15)' : '0 1px 3px rgba(0, 0, 0, 0.1)',
                           }}
-                          onClick={() => handleToggleTrack(track.id)}
+                          onClick={() => handleToggleVideo(video.id)}
                           onMouseEnter={(e: any) => {
                             if (!isSelected) {
                               e.currentTarget.style.borderColor = '#4945ff';
@@ -409,19 +376,36 @@ const TrackSelector: React.FC = () => {
                           }}
                         >
                           <Flex direction="column" gap={0}>
-                            {/* Artwork */}
+                            {/* Thumbnail */}
                             <Box
                               style={{
                                 width: '100%',
-                                aspectRatio: '1',
-                                backgroundImage: track.artwork 
-                                  ? `url(${track.artwork})` 
+                                aspectRatio: '16/9',
+                                backgroundImage: video.thumbnailUrl
+                                  ? `url(${video.thumbnailUrl})`
                                   : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                                 backgroundSize: 'cover',
                                 backgroundPosition: 'center',
                                 position: 'relative',
                               }}
                             >
+                              <Box
+                                style={{
+                                  position: 'absolute',
+                                  top: '50%',
+                                  left: '50%',
+                                  transform: 'translate(-50%, -50%)',
+                                  width: '48px',
+                                  height: '48px',
+                                  borderRadius: '50%',
+                                  backgroundColor: 'rgba(0, 0, 0, 0.6)',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                }}
+                              >
+                                <Play style={{ color: 'white', width: '24px', height: '24px', marginLeft: '4px' }} />
+                              </Box>
                               {isSelected && (
                                 <Box
                                   style={{
@@ -442,47 +426,47 @@ const TrackSelector: React.FC = () => {
                                 </Box>
                               )}
                             </Box>
-                            
-                            {/* Track Info */}
+
+                            {/* Video Info */}
                             <Box padding={3}>
                               <Flex direction="column" gap={1}>
-                                <Typography 
-                                  fontWeight="bold" 
+                                <Typography
+                                  fontWeight="bold"
                                   variant="omega"
                                   style={{
                                     overflow: 'hidden',
                                     textOverflow: 'ellipsis',
-                                    whiteSpace: 'nowrap',
+                                    display: '-webkit-box',
+                                    WebkitLineClamp: 2,
+                                    WebkitBoxOrient: 'vertical',
+                                    lineHeight: '1.4',
+                                    minHeight: '2.8em',
                                   }}
-                                  title={track.title}
+                                  title={video.title}
                                 >
-                                  {track.title}
+                                  {video.title}
                                 </Typography>
-                                <Typography 
-                                  variant="pi" 
+                                <Typography
+                                  variant="pi"
                                   textColor="neutral600"
                                   style={{
                                     overflow: 'hidden',
                                     textOverflow: 'ellipsis',
                                     whiteSpace: 'nowrap',
                                   }}
-                                  title={track.artist}
+                                  title={video.channelTitle}
                                 >
-                                  {track.artist}
+                                  {video.channelTitle}
                                 </Typography>
-                                {track.album && (
-                                  <Typography 
-                                    variant="pi" 
+                                {video.viewCount && (
+                                  <Typography
+                                    variant="pi"
                                     textColor="neutral500"
                                     style={{
-                                      overflow: 'hidden',
-                                      textOverflow: 'ellipsis',
-                                      whiteSpace: 'nowrap',
                                       fontSize: '11px',
                                     }}
-                                    title={track.album}
                                   >
-                                    {track.album}
+                                    {video.viewCount.toLocaleString()} views
                                   </Typography>
                                 )}
                               </Flex>
@@ -495,7 +479,7 @@ const TrackSelector: React.FC = () => {
                 </Grid.Root>
 
                 {/* Save Button */}
-                <Box 
+                <Box
                   paddingTop={6}
                   paddingBottom={4}
                   style={{
@@ -508,9 +492,9 @@ const TrackSelector: React.FC = () => {
                 >
                   <Flex gap={3} justifyContent="space-between" alignItems="center">
                     <Typography variant="omega" textColor="neutral600">
-                      {selectedTracks.length > 0 
-                        ? `${selectedTracks.length} track${selectedTracks.length !== 1 ? 's' : ''} will be saved`
-                        : 'No tracks selected'}
+                      {selectedVideos.length > 0
+                        ? `${selectedVideos.length} video${selectedVideos.length !== 1 ? 's' : ''} will be saved`
+                        : 'No videos selected'}
                     </Typography>
                     <Button
                       variant="primary"
@@ -518,9 +502,9 @@ const TrackSelector: React.FC = () => {
                       startIcon={<Check />}
                       onClick={() => updateMutation.mutate()}
                       loading={updateMutation.isLoading}
-                      disabled={selectedTracks.length === 0}
+                      disabled={selectedVideos.length === 0}
                     >
-                      Save Selection{selectedTracks.length > 0 && ` (${selectedTracks.length})`}
+                      Save Selection{selectedVideos.length > 0 && ` (${selectedVideos.length})`}
                     </Button>
                   </Flex>
                 </Box>
@@ -532,5 +516,4 @@ const TrackSelector: React.FC = () => {
   );
 };
 
-export default TrackSelector;
-
+export default VideoSelector;

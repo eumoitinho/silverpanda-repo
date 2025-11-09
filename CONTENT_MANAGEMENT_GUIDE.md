@@ -5,12 +5,13 @@ Este guia explica como usar o sistema de gerenciamento de conteúdo do Strapi pa
 ## Índice
 
 1. [Visão Geral](#visão-geral)
-2. [Configuração Inicial](#configuração-inicial)
-3. [Music Page - Spotify & SoundCloud](#music-page)
-4. [Videos Page - YouTube](#videos-page)
-5. [Collaborations Page - Instagram](#collaborations-page)
-6. [Endpoints da API](#endpoints-da-api)
-7. [Troubleshooting](#troubleshooting)
+2. [Painel Visual de Seleção](#painel-visual-de-seleção)
+3. [Configuração Inicial](#configuração-inicial)
+4. [Music Page - Spotify & SoundCloud](#music-page)
+5. [Videos Page - YouTube](#videos-page)
+6. [Collaborations Page - Instagram](#collaborations-page)
+7. [Endpoints da API](#endpoints-da-api)
+8. [Troubleshooting](#troubleshooting)
 
 ## Visão Geral
 
@@ -21,10 +22,48 @@ O sistema permite que você:
 - **Collaborations Page**: Selecione posts do Instagram que serão exibidos na página de colaborações
 
 **Como funciona:**
-1. Você informa apenas o ID (ou URL) do conteúdo
-2. O Strapi busca automaticamente todos os dados das APIs oficiais
-3. Os dados são salvos e podem ser editados manualmente se necessário
-4. O conteúdo é publicado e disponibilizado via API REST para o frontend
+1. ✨ **NOVO**: Use o painel visual para ver e selecionar conteúdo clicando em cards
+2. OU você pode informar manualmente IDs/URLs no Content Manager
+3. O Strapi busca automaticamente todos os dados das APIs oficiais
+4. Os dados são salvos e podem ser editados manualmente se necessário
+5. O conteúdo é publicado e disponibilizado via API REST para o frontend
+
+## Painel Visual de Seleção
+
+### ⭐ A Forma Mais Fácil de Selecionar Conteúdo!
+
+Acesse o **Content Manager** no menu lateral do Strapi Admin:
+- Clique em **Plugins → Content Manager** (ícone de grade com checkmark)
+- Você verá 3 abas: **Music**, **Videos** e **Collaborations**
+
+#### Como Usar:
+
+**1. Music (Spotify/SoundCloud)**
+- Selecione o provider (Spotify ou SoundCloud)
+- Veja cards visuais com artwork, título, artista e álbum
+- Clique nos cards para selecionar/desselecionar
+- Use a busca para filtrar por título, artista ou álbum
+- Clique em "Save Selection" para salvar
+
+**2. Videos (YouTube)**
+- Digite o YouTube Channel ID
+- Clique em "Load Videos" para carregar os vídeos do canal
+- Veja cards com thumbnail, título e views
+- Clique nos cards para selecionar
+- Salve sua seleção
+
+**3. Collaborations (Instagram)**
+- Veja automaticamente os posts recentes da sua conta
+- Clique nos cards para selecionar
+- Veja preview da mídia, caption, likes e comentários
+- Salve sua seleção
+
+**Vantagens do Painel Visual:**
+- ✅ Não precisa digitar IDs manualmente
+- ✅ Vê preview do conteúdo antes de selecionar
+- ✅ Interface intuitiva com cards visuais
+- ✅ Busca e filtros para encontrar conteúdo rapidamente
+- ✅ Seleciona múltiplos itens de uma vez
 
 ## Configuração Inicial
 
