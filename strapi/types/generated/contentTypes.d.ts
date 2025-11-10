@@ -483,6 +483,7 @@ export interface ApiCollaborationsPageCollaborationsPage
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
     instagramPosts: Schema.Attribute.Component<
       'integrations.instagram-post',
       true
@@ -494,6 +495,7 @@ export interface ApiCollaborationsPageCollaborationsPage
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    selectedInstagramPostIds: Schema.Attribute.JSON;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -682,6 +684,41 @@ export interface ApiVideoVideo extends Struct.CollectionTypeSchema {
     year: Schema.Attribute.String;
     youtubeId: Schema.Attribute.String;
     youtubeUrl: Schema.Attribute.String;
+  };
+}
+
+export interface ApiVideosPageVideosPage extends Struct.SingleTypeSchema {
+  collectionName: 'videos_pages';
+  info: {
+    description: 'Curadoria de v\u00EDdeos do YouTube para a se\u00E7\u00E3o VIDEOS';
+    displayName: 'Videos Page';
+    pluralName: 'videos-pages';
+    singularName: 'videos-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::videos-page.videos-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    selectedYouTubeVideoIds: Schema.Attribute.JSON;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    youtubeVideos: Schema.Attribute.Component<
+      'integrations.youtube-video',
+      true
+    >;
   };
 }
 
@@ -1202,6 +1239,7 @@ declare module '@strapi/strapi' {
       'api::press-feature.press-feature': ApiPressFeaturePressFeature;
       'api::tour-date.tour-date': ApiTourDateTourDate;
       'api::video.video': ApiVideoVideo;
+      'api::videos-page.videos-page': ApiVideosPageVideosPage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

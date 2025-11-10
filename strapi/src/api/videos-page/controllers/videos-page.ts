@@ -126,8 +126,11 @@ export default factories.createCoreController('api::videos-page.videos-page', ({
         return ctx.badRequest('Missing channelId parameter');
       }
 
+      // Ensure channelId is a string
+      const channelIdString = typeof channelId === 'string' ? channelId : Array.isArray(channelId) ? channelId[0] : String(channelId);
+
       const { searchChannelVideos } = await import('../../../utils/integrations/youtube');
-      const videos = await searchChannelVideos(channelId);
+      const videos = await searchChannelVideos(channelIdString);
       return { data: videos, provider: 'youtube' };
     } catch (error) {
       strapi.log.error('Error fetching available videos:', error);
