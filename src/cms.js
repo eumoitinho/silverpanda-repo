@@ -16,13 +16,13 @@ const STRAPI_PUBLICATION_STATE = PREVIEW_MODE
   : (import.meta.env.VITE_STRAPI_PUBLICATION_STATE || 'live').toLowerCase();
 
 const DEFAULT_HERO = {
-  title: 'Silver Panda',
-  subtitle: 'Melodic Techno Duo',
+  title: '',
+  subtitle: '',
   metaTitle: 'Silver Panda',
-  heroBackground: '',
-  heroLogo: '',
-  background: '',
-  logo: '',
+  heroBackground: '/photos/Untitled-1.png',
+  heroLogo: '/logo.png',
+  background: '/photos/Untitled-1.png',
+  logo: '/logo.png',
 };
 
 const DEFAULT_TOURS = {
@@ -56,7 +56,7 @@ const DEFAULT_INFO = {
     { label: 'Management', link: 'mailto:management@silvpanda.com', value: 'management@silvpanda.com' },
     { label: 'Bookings', link: 'mailto:bookings@silvpanda.com', value: 'bookings@silvpanda.com' },
   ],
-  credit: 'Design by ANGELO',
+  credit: 'Design by github.com/eumoitinho',
 };
 
 const DEFAULT_SPOTIFY_TRACKS = [];
@@ -286,7 +286,20 @@ export class StrapiCMS {
     const hasTitle = typeof homepage.title === 'string' && homepage.title.trim().length > 0;
     const hasSubtitle = typeof homepage.subtitle === 'string' && homepage.subtitle.trim().length > 0;
 
+    console.log('[formatHero] Raw data:', {
+      backgroundData,
+      logoData,
+      heroBackground,
+      heroLogo,
+      hasTitle,
+      hasSubtitle,
+      title: homepage.title,
+      subtitle: homepage.subtitle
+    });
+
+    // Always return data if we have background or logo, even without title/subtitle
     if (!hasTitle && !hasSubtitle && !heroBackground && !heroLogo) {
+      console.log('[formatHero] No data found, using default');
       return this.getDefaultHero();
     }
 
@@ -297,16 +310,19 @@ export class StrapiCMS {
           ? homepage.title
           : DEFAULT_HERO.metaTitle || DEFAULT_HERO.title;
 
-    return {
-      title: hasTitle ? homepage.title : null,
-      subtitle: hasSubtitle ? homepage.subtitle : null,
+    const formatted = {
+      title: hasTitle ? homepage.title : (DEFAULT_HERO.title || null),
+      subtitle: hasSubtitle ? homepage.subtitle : (DEFAULT_HERO.subtitle || null),
       metaTitle,
-      heroBackground,
-      heroLogo,
-      background: heroBackground,
-      logo: heroLogo,
+      heroBackground: heroBackground || DEFAULT_HERO.heroBackground,
+      heroLogo: heroLogo || DEFAULT_HERO.heroLogo,
+      background: heroBackground || DEFAULT_HERO.background,
+      logo: heroLogo || DEFAULT_HERO.logo,
       isFallback: false,
     };
+
+    console.log('[formatHero] Formatted hero:', formatted);
+    return formatted;
   }
 
   static formatSpotifySelection(entries = []) {
@@ -519,7 +535,10 @@ export class StrapiCMS {
     if (!this.isConfigured()) return this.getDefaultInfo();
 
     try {
-      const data = await this.fetchAPI('about', { populate: 'image' });
+      const data = await this.fetchAPI('info', { populate: 'image' }).catch(() => {
+        // Try 'about' as fallback
+        return this.fetchAPI('about', { populate: 'image' });
+      });
       const attributes = unwrapData(data?.data) || {};
       const imageData = attributes.image?.data?.attributes || attributes.image?.attributes || attributes.image;
       const image = imageData?.url || attributes.imageUrl;

@@ -1,0 +1,116 @@
+{
+  "press_articles": [
+    {
+      "publicacao": "Beatportal",
+      "titulo": "Silver Panda x Moby: Lifting a Classic Into the Present",
+      "url": "https://www.beatportal.com/articles/1082619-silver-panda-x-moby-lifting-a-classic-into-the-present",
+      "capa": "/photos/DSCF3797.jpg",
+      "data": "2025",
+      "descricao": "Artigo sobre a colaboração da dupla com Moby no remix de 'Lift Me Up', destacando como mantiveram a essência da faixa original enquanto criavam uma versão moderna de melodic techno"
+    },
+    {
+      "publicacao": "PLAYY. Magazine",
+      "titulo": "Silver Panda on their upcoming remixes, psytrance roots and more",
+      "url": "https://theplayground.co.uk/silver-panda-on-their-upcoming-remixes-psytrance-roots-and-more-interview/",
+      "capa": null,
+      "data": "Fevereiro 2025",
+      "descricao": "Entrevista completa com Leo discutindo raízes psytrance, remixes futuros de Moby e Depeche Mode, turnê mundial por 29 países e a filosofia por trás do selo Panda Lab Records"
+    },
+    {
+      "publicacao": "EDM Identity",
+      "titulo": "Silver Panda Drops Off a Captivating Winter Mix",
+      "url": "https://edmidentity.com/2025/01/26/edmid-winter-waveforms-2025-silver-panda/",
+      "capa": null,
+      "data": "Janeiro 2025",
+      "descricao": "Cobertura sobre apresentações em Dreamstate SoCal e Afterlife Ibiza, além de lançamentos de 2024 como 'Tribal Journey', 'Four Elements' e 'Power of Acid'"
+    },
+    {
+      "publicacao": "The Nocturnal Times",
+      "titulo": "Silver Panda, Like Mike And Against All Ødds Come Together For 'Unity'",
+      "url": "https://www.thenocturnaltimes.com/silver-panda-like-mike-and-against-all-odds-come-together-for-unity/",
+      "capa": "https://www.thenocturnaltimes.com/wp-content/uploads/2023/09/SP1-scaled.jpg",
+      "data": "Setembro 2023",
+      "descricao": "Artigo sobre a colaboração com Like Mike e Against All Ødds para o Tomorrowland Brasil, descrevendo a faixa como melodic techno hipnótico"
+    },
+    {
+      "publicacao": "Roland Articles",
+      "titulo": "A Few Minutes with Moby",
+      "url": "https://articles.roland.com/a-few-minutes-with-moby/",
+      "capa": null,
+      "data": "Agosto 2025",
+      "descricao": "Entrevista com Moby sobre o remix de Silver Panda de 'Lift Me Up' e sua filosofia de compartilhamento musical"
+    },
+    {
+      "publicacao": "Beatport",
+      "titulo": "Silver Panda - Artist Profile",
+      "url": "https://www.beatport.com/artist/silver-panda/1022241",
+      "capa": null,
+      "data": "2025",
+      "descricao": "Perfil oficial no Beatport destacando Top 10 melodic techno, turnê mundial por 29 países e ranking #4 do Panda Lab Records"
+    },
+    {
+      "publicacao": "Insomniac",
+      "titulo": "Silver Panda - Artists",
+      "url": "https://www.insomniac.com/music/artists/silver-panda/",
+      "capa": null,
+      "data": "2025",
+      "descricao": "Página oficial de artista no Insomniac destacando colaborações com John Summit, lançamentos em selos como Zamna, Tomorrowland Music, Spinnin Records e Sony Music"
+    }
+  ],
+  "press_kit": {
+    "publicacao": "Elements.inc",
+    "titulo": "Silver Panda - Official Press Kit",
+    "url": "https://elementsinc.co.in/artist/silver-panda/",
+    "download": "Available",
+    "descricao": "Press kit oficial para download com bio completa e informações de booking"
+  },
+  "perfis_sociais": {
+    "instagram": {
+      "handle": "@silverpandamusic",
+      "url": "https://www.instagram.com/silverpandamusic/",
+      "seguidores": "53K"
+    },
+    "facebook": {
+      "nome": "Silver Panda",
+      "url": "https://www.facebook.com/SilverPandaMusic/"
+    },
+    "spotify": {
+      "url": "https://open.spotify.com/artist/310IX3ZzFSl14ZvY2dM8Da",
+      "ouvintes_mensais": "2.2M"
+    },
+    "soundcloud": {
+      "url": "https://soundcloud.com/silverpandamusic"
+    }
+  },
+  "destaques": {
+    "ranking_beatport": "Top 10 melodic techno artists",
+    "chart_position": "#1 Beatport Overall Chart (Sweet Disposition remix)",
+    "label_ranking": "#4 Beatport melodic techno chart (Panda Lab Records, 2023)",
+    "turnee_mundial": "29 países (América do Norte, Sul, Europa e Ásia)",
+    "colaboracoes": [
+      "John Summit",
+      "Moby",
+      "Like Mike",
+      "Space Motion",
+      "Sevenn",
+      "Against All Ødds"
+    ],
+    "selos": [
+      "Zamna",
+      "Tomorrowland Music",
+      "Spinnin Records",
+      "Sony Music",
+      "Panda Lab Records"
+    ],
+    "apoio_de": [
+      "David Guetta",
+      "Vintage Culture",
+      "Tale of Us",
+      "Tiesto",
+      "CamelPhat",
+      "Meduza",
+      "Dom Dolla"
+    ]
+  }
+}
+

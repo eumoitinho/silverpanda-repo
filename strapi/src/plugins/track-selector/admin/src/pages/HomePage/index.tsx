@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Main, Box, Typography, Tabs } from '@strapi/design-system';
-import { Music, PlaySquare, Picture } from '@strapi/icons';
+import { Main, Box, Typography, Tabs, Flex } from '@strapi/design-system';
+import { Play, PlaySquare, Picture } from '@strapi/icons';
 import TrackSelector from '../TrackSelector';
-import VideoSelector from '../VideoSelector';
-import InstagramSelector from '../InstagramSelector';
 
 const HomePage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'music' | 'videos' | 'instagram'>('music');
@@ -23,16 +21,22 @@ const HomePage: React.FC = () => {
         <Tabs.Root value={activeTab} onValueChange={(value) => setActiveTab(value as any)}>
           <Tabs.List aria-label="Content selection tabs">
             <Tabs.Trigger value="music">
-              <Music />
-              Music (Spotify/SoundCloud)
+              <Flex gap={2} alignItems="center">
+                <Play />
+                <span>Music (Spotify/SoundCloud)</span>
+              </Flex>
             </Tabs.Trigger>
             <Tabs.Trigger value="videos">
-              <PlaySquare />
-              Videos (YouTube)
+              <Flex gap={2} alignItems="center">
+                <PlaySquare />
+                <span>Videos (YouTube)</span>
+              </Flex>
             </Tabs.Trigger>
             <Tabs.Trigger value="instagram">
-              <Picture />
-              Collaborations (Instagram)
+              <Flex gap={2} alignItems="center">
+                <Picture />
+                <span>Collaborations (Instagram)</span>
+              </Flex>
             </Tabs.Trigger>
           </Tabs.List>
 
@@ -41,10 +45,20 @@ const HomePage: React.FC = () => {
               <TrackSelector />
             </Tabs.Content>
             <Tabs.Content value="videos">
-              <VideoSelector />
+              <Box padding={4}>
+                <Typography variant="beta">Videos (YouTube)</Typography>
+                <Typography variant="omega" textColor="neutral600">
+                  Coming soon...
+                </Typography>
+              </Box>
             </Tabs.Content>
             <Tabs.Content value="instagram">
-              <InstagramSelector />
+              <Box padding={4}>
+                <Typography variant="beta">Collaborations (Instagram)</Typography>
+                <Typography variant="omega" textColor="neutral600">
+                  Coming soon...
+                </Typography>
+              </Box>
             </Tabs.Content>
           </Box>
         </Tabs.Root>

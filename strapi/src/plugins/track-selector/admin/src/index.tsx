@@ -9,6 +9,16 @@ export default {
       isReady: false,
       name: 'Track Selector',
     });
+    
+    app.addMenuLink({
+      to: `/plugins/${PLUGIN_ID}`,
+      intlLabel: {
+        id: `${PLUGIN_ID}.plugin.name`,
+        defaultMessage: 'Track Selector',
+      },
+      Component: () => import('./pages/HomePage').then((mod) => mod.default),
+      permissions: [],
+    });
   },
   bootstrap(app: any) {},
 };

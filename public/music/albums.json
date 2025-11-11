@@ -1,0 +1,366 @@
+{
+  "albums": [
+    {
+      "id": "5uZkzmxZwNTyh59qWmtqCP",
+      "name": "Take No More",
+      "artist": "Silver Panda",
+      "releaseDate": "2025-10-31",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273685a59082e21218908f8f4ef",
+      "externalUrl": "https://open.spotify.com/album/5uZkzmxZwNTyh59qWmtqCP",
+      "totalTracks": 1
+    },
+    {
+      "id": "17BauNtvjLuJ8gLfvLnMkc",
+      "name": "Lift Me Up",
+      "artist": "Silver Panda",
+      "releaseDate": "2025-08-29",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273f6a74d0fa6fc2d4eb384a5e7",
+      "externalUrl": "https://open.spotify.com/album/17BauNtvjLuJ8gLfvLnMkc",
+      "totalTracks": 1
+    },
+    {
+      "id": "2On3P4b62uVRnyG5rY5SfH",
+      "name": "Other Side",
+      "artist": "Silver Panda",
+      "releaseDate": "2025-07-18",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273bce81c9138f198a0fb1864b6",
+      "externalUrl": "https://open.spotify.com/album/2On3P4b62uVRnyG5rY5SfH",
+      "totalTracks": 1
+    },
+    {
+      "id": "7o31GelLB0C1O2hLD1ojCU",
+      "name": "Flashing Light",
+      "artist": "Silver Panda",
+      "releaseDate": "2025-06-27",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b27382b8014f6b452acc1a4e6f88",
+      "externalUrl": "https://open.spotify.com/album/7o31GelLB0C1O2hLD1ojCU",
+      "totalTracks": 1
+    },
+    {
+      "id": "4bjJwDMlAsmhOKAkMWzWo1",
+      "name": "Sound of Panda",
+      "artist": "Silver Panda",
+      "releaseDate": "2025-04-25",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273611627f2caf92fb6a9571435",
+      "externalUrl": "https://open.spotify.com/album/4bjJwDMlAsmhOKAkMWzWo1",
+      "totalTracks": 1
+    },
+    {
+      "id": "34lUjaTOCTPerymIIofDKG",
+      "name": "In My Head (Silver Panda Remix)",
+      "artist": "Gryffin",
+      "releaseDate": "2025-03-13",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b27343895805569e5492dd441841",
+      "externalUrl": "https://open.spotify.com/album/34lUjaTOCTPerymIIofDKG",
+      "totalTracks": 1
+    },
+    {
+      "id": "3aMj0LPwbhwO1AGu5Y8mZM",
+      "name": "In Control",
+      "artist": "Silver Panda",
+      "releaseDate": "2025-02-21",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273e2c7d63b8b96747945c86a53",
+      "externalUrl": "https://open.spotify.com/album/3aMj0LPwbhwO1AGu5Y8mZM",
+      "totalTracks": 1
+    },
+    {
+      "id": "2v7iHmTCSLV6jWsxt7gxkv",
+      "name": "GOOD TIMES",
+      "artist": "Silver Panda",
+      "releaseDate": "2024-09-06",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273dbe723066799981724b87340",
+      "externalUrl": "https://open.spotify.com/album/2v7iHmTCSLV6jWsxt7gxkv",
+      "totalTracks": 1
+    },
+    {
+      "id": "6JyvNtDRMgxjMB9JJPR1bT",
+      "name": "Underground",
+      "artist": "Silver Panda",
+      "releaseDate": "2024-08-23",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273b4ec9789eb4dc5b6a1978b5f",
+      "externalUrl": "https://open.spotify.com/album/6JyvNtDRMgxjMB9JJPR1bT",
+      "totalTracks": 1
+    },
+    {
+      "id": "1VGC10p1ncXnBEFJ6Y3kMa",
+      "name": "Power of Acid",
+      "artist": "Silver Panda",
+      "releaseDate": "2024-07-19",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b2737946b092e43d6bbf48d70893",
+      "externalUrl": "https://open.spotify.com/album/1VGC10p1ncXnBEFJ6Y3kMa",
+      "totalTracks": 1
+    },
+    {
+      "id": "2la5EkFOOLrUCjfgPh03wB",
+      "name": "Four Elements",
+      "artist": "Silver Panda",
+      "releaseDate": "2024-06-28",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273f4353ded1e5e3f669936c091",
+      "externalUrl": "https://open.spotify.com/album/2la5EkFOOLrUCjfgPh03wB",
+      "totalTracks": 1
+    },
+    {
+      "id": "5f2NmcLzsiBG7u04HHokeq",
+      "name": "Tribal Journey",
+      "artist": "Zafrir",
+      "releaseDate": "2024-05-17",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b2739b97bb2040befb7f51e2da52",
+      "externalUrl": "https://open.spotify.com/album/5f2NmcLzsiBG7u04HHokeq",
+      "totalTracks": 1
+    },
+    {
+      "id": "6BM3arvtpuj41WO2E4V77i",
+      "name": "Sweet Disposition (John Summit & Silver Panda Remix)",
+      "artist": "The Temper Trap",
+      "releaseDate": "2024-01-26",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273d148b2cf7a87ca6c92587e70",
+      "externalUrl": "https://open.spotify.com/album/6BM3arvtpuj41WO2E4V77i",
+      "totalTracks": 1
+    },
+    {
+      "id": "7Kpbs87D9UTYgT5u5XqhxW",
+      "name": "Paradise",
+      "artist": "Silver Panda",
+      "releaseDate": "2023-12-15",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b2732eb2eddc4daf78afda94f421",
+      "externalUrl": "https://open.spotify.com/album/7Kpbs87D9UTYgT5u5XqhxW",
+      "totalTracks": 1
+    },
+    {
+      "id": "5TPXuWzNSFD4jY5BhxLI8f",
+      "name": "Welcome The Night",
+      "artist": "Silver Panda",
+      "releaseDate": "2023-10-27",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273cb1f28e9df47602ac16af661",
+      "externalUrl": "https://open.spotify.com/album/5TPXuWzNSFD4jY5BhxLI8f",
+      "totalTracks": 1
+    },
+    {
+      "id": "1OtEAco8fIPz3fwnga8Dda",
+      "name": "Sully",
+      "artist": "illusionize",
+      "releaseDate": "2023-10-13",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273d400f6e938d928c8b807c42e",
+      "externalUrl": "https://open.spotify.com/album/1OtEAco8fIPz3fwnga8Dda",
+      "totalTracks": 1
+    },
+    {
+      "id": "5kszkoAaJSeVdHEP7EKRRX",
+      "name": "Unity",
+      "artist": "Like Mike",
+      "releaseDate": "2023-09-15",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273c1a79344b228d2026bdd4593",
+      "externalUrl": "https://open.spotify.com/album/5kszkoAaJSeVdHEP7EKRRX",
+      "totalTracks": 1
+    },
+    {
+      "id": "5TJCSnaGddBOsoAcAbFuKq",
+      "name": "Deep Space (Extended Mix)",
+      "artist": "Sevenn",
+      "releaseDate": "2023-08-30",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273a83a9aa9985c16866ae29193",
+      "externalUrl": "https://open.spotify.com/album/5TJCSnaGddBOsoAcAbFuKq",
+      "totalTracks": 1
+    },
+    {
+      "id": "2FoPae81NmFY9puNcEcsSk",
+      "name": "Deep Space",
+      "artist": "Sevenn",
+      "releaseDate": "2023-08-30",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b27374b3964a8466375cc978ff61",
+      "externalUrl": "https://open.spotify.com/album/2FoPae81NmFY9puNcEcsSk",
+      "totalTracks": 1
+    },
+    {
+      "id": "7FiljzyhNdsJtRCOLv9iGZ",
+      "name": "Human Heart",
+      "artist": "Silver Panda",
+      "releaseDate": "2023-08-04",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273fc8115b66edefd090510af7a",
+      "externalUrl": "https://open.spotify.com/album/7FiljzyhNdsJtRCOLv9iGZ",
+      "totalTracks": 1
+    },
+    {
+      "id": "75AKDvJYKia0H6k5UQHoRG",
+      "name": "Silver Spoon",
+      "artist": "Silver Panda",
+      "releaseDate": "2023-07-21",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b2733988b6dbec41014b600aa8f9",
+      "externalUrl": "https://open.spotify.com/album/75AKDvJYKia0H6k5UQHoRG",
+      "totalTracks": 1
+    },
+    {
+      "id": "6KME6taPoPKeaY4nj9kNA3",
+      "name": "Like a River",
+      "artist": "Silver Panda",
+      "releaseDate": "2023-07-07",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b27389437ff28271726492296d7e",
+      "externalUrl": "https://open.spotify.com/album/6KME6taPoPKeaY4nj9kNA3",
+      "totalTracks": 1
+    },
+    {
+      "id": "5Bfb6CpUmo5GopSdskXPFt",
+      "name": "Freedom",
+      "artist": "Silver Panda",
+      "releaseDate": "2023-06-16",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b2737f733d0b80e1c8955fd31316",
+      "externalUrl": "https://open.spotify.com/album/5Bfb6CpUmo5GopSdskXPFt",
+      "totalTracks": 1
+    },
+    {
+      "id": "7mMxGkBktUO7N0MakO4c0G",
+      "name": "Soul Connection",
+      "artist": "Silver Panda",
+      "releaseDate": "2023-03-17",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b2737d388b0f6034ffc29a1e0bb6",
+      "externalUrl": "https://open.spotify.com/album/7mMxGkBktUO7N0MakO4c0G",
+      "totalTracks": 1
+    },
+    {
+      "id": "5OiykXP8gj5xWCZck3VqFl",
+      "name": "Devotion (feat. Eleonora)",
+      "artist": "Silver Panda",
+      "releaseDate": "2023-03-03",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b2739845fe5bb2275cd49ed8b9da",
+      "externalUrl": "https://open.spotify.com/album/5OiykXP8gj5xWCZck3VqFl",
+      "totalTracks": 1
+    },
+    {
+      "id": "0fzyU4bYqlHY0ClNJz8U2B",
+      "name": "Mosaic",
+      "artist": "Silver Panda",
+      "releaseDate": "2023-02-17",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b27313b2441e8cb8a1755e49b770",
+      "externalUrl": "https://open.spotify.com/album/0fzyU4bYqlHY0ClNJz8U2B",
+      "totalTracks": 3
+    },
+    {
+      "id": "1WUhtmrhPLgaaDE0h94pPQ",
+      "name": "Outer Space",
+      "artist": "Silver Panda",
+      "releaseDate": "2023-02-03",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273cfc7dcaa8b1b6a684cf1f404",
+      "externalUrl": "https://open.spotify.com/album/1WUhtmrhPLgaaDE0h94pPQ",
+      "totalTracks": 1
+    },
+    {
+      "id": "0CrzmYuA30N4DoAQNS94ss",
+      "name": "Stranger",
+      "artist": "Space Motion",
+      "releaseDate": "2023-01-27",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273ee9035309b0e2abc161dbd83",
+      "externalUrl": "https://open.spotify.com/album/0CrzmYuA30N4DoAQNS94ss",
+      "totalTracks": 1
+    },
+    {
+      "id": "7xKoCm7g0aAK0jSCnguq6W",
+      "name": "No Sleep (feat. Glasgow Ki$$) [Silver Panda Remix]",
+      "artist": "Famba",
+      "releaseDate": "2022-12-09",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273da8ec5493f2a07a8087e4361",
+      "externalUrl": "https://open.spotify.com/album/7xKoCm7g0aAK0jSCnguq6W",
+      "totalTracks": 1
+    },
+    {
+      "id": "6aKRiIDCcV4yek92nMyQnk",
+      "name": "Soul Connection",
+      "artist": "Silver Panda",
+      "releaseDate": "2022-11-18",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b27303550a43db7058cb087c48d8",
+      "externalUrl": "https://open.spotify.com/album/6aKRiIDCcV4yek92nMyQnk",
+      "totalTracks": 1
+    },
+    {
+      "id": "50EBF6BzFrOOMdaF8BMZV1",
+      "name": "Stereo Love",
+      "artist": "Silver Panda",
+      "releaseDate": "2022-10-28",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273e416f5fd247af2bb37e2cbf2",
+      "externalUrl": "https://open.spotify.com/album/50EBF6BzFrOOMdaF8BMZV1",
+      "totalTracks": 1
+    },
+    {
+      "id": "4rtP9HNAcbfwsVVJNtQoJs",
+      "name": "Close to Me",
+      "artist": "Silver Panda",
+      "releaseDate": "2022-10-07",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b2736dcb0e93d5ff2ac73e1ee639",
+      "externalUrl": "https://open.spotify.com/album/4rtP9HNAcbfwsVVJNtQoJs",
+      "totalTracks": 1
+    },
+    {
+      "id": "19eIwgGKhTWFg7Ta9HdXXg",
+      "name": "We Call This Acid",
+      "artist": "Silver Panda",
+      "releaseDate": "2022-09-02",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273ab73046d0315c90b3c15740d",
+      "externalUrl": "https://open.spotify.com/album/19eIwgGKhTWFg7Ta9HdXXg",
+      "totalTracks": 1
+    },
+    {
+      "id": "4ZnYaoRLG6JbYvpLn3PKDv",
+      "name": "The Hanging Tree",
+      "artist": "Silver Panda",
+      "releaseDate": "2022-08-26",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273ece66369f65a10908f962be4",
+      "externalUrl": "https://open.spotify.com/album/4ZnYaoRLG6JbYvpLn3PKDv",
+      "totalTracks": 1
+    },
+    {
+      "id": "0rLrki2WmkOpivJLVEU8V3",
+      "name": "Volcano",
+      "artist": "Silver Panda",
+      "releaseDate": "2022-08-05",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b27359c585dc540523c7a44606a0",
+      "externalUrl": "https://open.spotify.com/album/0rLrki2WmkOpivJLVEU8V3",
+      "totalTracks": 1
+    },
+    {
+      "id": "7oZtD0Fm6uySDP4a9neHte",
+      "name": "Trigger Me",
+      "artist": "Skapi",
+      "releaseDate": "2022-06-10",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273ea02c360345931761dfc59ad",
+      "externalUrl": "https://open.spotify.com/album/7oZtD0Fm6uySDP4a9neHte",
+      "totalTracks": 2
+    },
+    {
+      "id": "0LILX7tieHJJOkHCayv2kq",
+      "name": "Tuka Tu",
+      "artist": "Space Motion",
+      "releaseDate": "2022-05-23",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b2739cea32000ac887f3e908dc0e",
+      "externalUrl": "https://open.spotify.com/album/0LILX7tieHJJOkHCayv2kq",
+      "totalTracks": 1
+    },
+    {
+      "id": "6VwhYmoAmf8wASoIXMzw9M",
+      "name": "Outer Space",
+      "artist": "Silver Panda",
+      "releaseDate": "2022-03-18",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273d323ed9a7116f480b5f3d33f",
+      "externalUrl": "https://open.spotify.com/album/6VwhYmoAmf8wASoIXMzw9M",
+      "totalTracks": 3
+    },
+    {
+      "id": "1cWlt1XwgtoWlHLtEKCXdC",
+      "name": "Acid or Techno",
+      "artist": "Silver Panda",
+      "releaseDate": "2022-01-21",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273b5a04e017364910eedb180d6",
+      "externalUrl": "https://open.spotify.com/album/1cWlt1XwgtoWlHLtEKCXdC",
+      "totalTracks": 3
+    },
+    {
+      "id": "43i0kpGSzImnUuNLjoGAuc",
+      "name": "African",
+      "artist": "Silver Panda",
+      "releaseDate": "2021-12-17",
+      "artwork": "https://i.scdn.co/image/ab67616d0000b273d61e2c5b94540c8c3b015974",
+      "externalUrl": "https://open.spotify.com/album/43i0kpGSzImnUuNLjoGAuc",
+      "totalTracks": 1
+    }
+  ],
+  "tracks": [],
+  "lastUpdated": "2025-11-11T12:21:55.370Z"
+}

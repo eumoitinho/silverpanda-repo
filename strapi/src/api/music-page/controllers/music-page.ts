@@ -156,20 +156,35 @@ export default factories.createCoreController('api::music-page.music-page', ({ s
     const provider = ctx.query?.provider || 'spotify';
     
     try {
+      strapi.log.info(`[music-page] Fetching tracks for provider: ${provider}`);
+      
       if (provider === 'spotify') {
         const { getTopTracks } = await import('../../../utils/integrations/spotify');
         const tracks = await getTopTracks();
+        strapi.log.info(`[music-page] Fetched ${tracks.length} Spotify tracks`);
         return { data: tracks, provider: 'spotify' };
       } else if (provider === 'soundcloud') {
         const { getTopTracks } = await import('../../../utils/integrations/soundcloud');
         const tracks = await getTopTracks();
+        strapi.log.info(`[music-page] Fetched ${tracks.length} SoundCloud tracks`);
         return { data: tracks, provider: 'soundcloud' };
       }
       
       return ctx.badRequest('Invalid provider. Use "spotify" or "soundcloud"');
     } catch (error) {
-      strapi.log.error('Error fetching available tracks:', error);
-      return ctx.internalServerError('Failed to fetch tracks');
+      strapi.log.error('[music-page] Error fetching available tracks:', error);
+      return ctx.internalServerError(error?.message || 'Failed to fetch tracks');
+    }
+  },
+
+  async getAvailableAlbums(ctx) {
+    try {
+      const { getArtistAlbums } = await import('../../../utils/integrations/spotify');
+      const albums = await getArtistAlbums();
+      return { data: albums, provider: 'spotify' };
+    } catch (error) {
+      strapi.log.error('Error fetching available albums:', error);
+      return ctx.internalServerError('Failed to fetch albums');
     }
   },
 }));

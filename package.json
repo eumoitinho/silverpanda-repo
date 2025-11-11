@@ -4,9 +4,12 @@
   "description": "Silver Panda official website with Spotify and SoundCloud integration",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "npm run dev:api & npm run dev:frontend",
+    "dev:api": "node server.js",
+    "dev:frontend": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node server.js"
   },
   "keywords": [
     "silver-panda",
@@ -17,7 +20,11 @@
   ],
   "author": "",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.2"
+  },
   "devDependencies": {
     "vite": "^5.0.0"
   }

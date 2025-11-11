@@ -24,6 +24,14 @@ export default {
         auth: false,
       },
     },
+    {
+      method: 'GET',
+      path: '/music-page/available-albums',
+      handler: 'music-page.getAvailableAlbums',
+      config: {
+        auth: false,
+      },
+    },
   ],
 };
 

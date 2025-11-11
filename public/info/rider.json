@@ -1,0 +1,130 @@
+{
+  "technical_rider": {
+    "title": "Technical Rider",
+    "sections": [
+      {
+        "title": "Sound System",
+        "content": [
+          "Professional sound system with minimum 10,000W power",
+          "Full-range speakers with subwoofers",
+          "Monitor wedges or in-ear monitors for DJ",
+          "Sound engineer on site"
+        ]
+      },
+      {
+        "title": "DJ Equipment",
+        "content": [
+          "Pioneer CDJ-3000 or CDJ-2000NXS2 (x2)",
+          "Pioneer DJM-900NXS2 or DJM-V10 mixer",
+          "Alternative: Rekordbox-compatible USB playback",
+          "Backup equipment available"
+        ]
+      },
+      {
+        "title": "Lighting",
+        "content": [
+          "Professional lighting rig with moving heads",
+          "LED panels or video walls",
+          "Lasers and fog machines",
+          "Lighting operator"
+        ]
+      },
+      {
+        "title": "Stage Requirements",
+        "content": [
+          "Minimum stage size: 6m x 4m",
+          "Stable, level platform",
+          "Covered stage (weather protection)",
+          "Safe access to stage"
+        ]
+      }
+    ]
+  },
+  "hospitality_rider": {
+    "title": "Hospitality Rider",
+    "sections": [
+      {
+        "title": "Dressing Room",
+        "content": [
+          "Private, secure dressing room",
+          "Mirror and lighting",
+          "Comfortable seating",
+          "Clean restroom facilities",
+          "WiFi access"
+        ]
+      },
+      {
+        "title": "Catering",
+        "content": [
+          "Meal for artist and crew (2-3 people)",
+          "Vegetarian and vegan options available",
+          "Bottled water and soft drinks",
+          "Hot beverages (coffee, tea)"
+        ]
+      },
+      {
+        "title": "Transportation",
+        "content": [
+          "Airport transfers",
+          "Hotel to venue transportation",
+          "Local transportation during stay"
+        ]
+      },
+      {
+        "title": "Accommodation",
+        "content": [
+          "Hotel accommodation for artist (1 night)",
+          "4-star or equivalent hotel",
+          "Single or double room",
+          "Check-in flexibility"
+        ]
+      }
+    ]
+  },
+  "travel_rider": {
+    "title": "Travel Rider",
+    "sections": [
+      {
+        "title": "Flight Requirements",
+        "content": [
+          "Business class for flights over 6 hours",
+          "Economy class for flights under 6 hours",
+          "Flexible booking dates",
+          "Direct flights preferred"
+        ]
+      },
+      {
+        "title": "Visa & Documentation",
+        "content": [
+          "Visa support letter if required",
+          "Passport information provided in advance",
+          "Work permits if necessary"
+        ]
+      },
+      {
+        "title": "Travel Insurance",
+        "content": [
+          "Travel insurance coverage",
+          "Equipment insurance",
+          "Health insurance coverage"
+        ]
+      }
+    ]
+  },
+  "management": {
+    "title": "Management & Booking",
+    "contact": {
+      "name": "Silver Panda Management",
+      "email": "booking@silverpanda.com",
+      "phone": "+1 (555) 123-4567",
+      "website": "https://www.silverpanda.com"
+    },
+    "notes": [
+      "All booking inquiries should be directed to management",
+      "Technical rider must be confirmed 2 weeks before event",
+      "Hospitality requirements to be confirmed 1 week before event",
+      "Payment terms: 50% deposit upon confirmation, 50% 7 days before event"
+    ]
+  }
+}
+
