@@ -15,6 +15,12 @@
     "title": {
       "type": "string"
     },
+    "description": {
+      "type": "text"
+    },
+    "selectedInstagramPostIds": {
+      "type": "json"
+    },
     "instagramPosts": {
       "type": "component",
       "repeatable": true,

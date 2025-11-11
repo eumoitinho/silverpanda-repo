@@ -44,7 +44,9 @@ const tokenCache: SpotifyTokenCache = {
 
 async function getAccessToken(): Promise<string | null> {
   if (!SPOTIFY_CLIENT_ID || !SPOTIFY_CLIENT_SECRET) {
-    console.warn('[spotify] Missing SPOTIFY_CLIENT_ID or SPOTIFY_CLIENT_SECRET in Strapi environment.');
+    console.error('[spotify] Missing SPOTIFY_CLIENT_ID or SPOTIFY_CLIENT_SECRET in Strapi environment.');
+    console.error('[spotify] SPOTIFY_CLIENT_ID:', SPOTIFY_CLIENT_ID ? 'SET' : 'MISSING');
+    console.error('[spotify] SPOTIFY_CLIENT_SECRET:', SPOTIFY_CLIENT_SECRET ? 'SET' : 'MISSING');
     return null;
   }
 
@@ -136,7 +138,10 @@ const SILVER_PANDA_ARTIST_ID = '310IX3ZzFSl14ZvY2dM8Da';
 
 export async function getTopTracks(limit = 50): Promise<SpotifyTrackData[]> {
   const token = await getAccessToken();
-  if (!token) return [];
+  if (!token) {
+    console.error('[spotify] Cannot fetch tracks: No access token. Check SPOTIFY_CLIENT_ID and SPOTIFY_CLIENT_SECRET in strapi/.env');
+    return [];
+  }
 
   try {
     const response = await fetch(
@@ -170,6 +175,70 @@ export async function getTopTracks(limit = 50): Promise<SpotifyTrackData[]> {
     }));
   } catch (error) {
     console.error('[spotify] Error fetching top tracks:', error);
+    return [];
+  }
+}
+
+interface SpotifyAlbumResponse {
+  id: string;
+  name: string;
+  artists: SpotifyArtist[];
+  release_date: string;
+  total_tracks: number;
+  images: Array<{ url: string }>;
+  external_urls: {
+    spotify: string;
+  };
+}
+
+interface SpotifyAlbumsResponse {
+  items: SpotifyAlbumResponse[];
+}
+
+export type SpotifyAlbumData = {
+  id: string;
+  name: string;
+  artist: string;
+  releaseDate: string;
+  totalTracks: number;
+  artwork: string | null;
+  externalUrl: string | null;
+};
+
+export async function getArtistAlbums(artistId: string = SILVER_PANDA_ARTIST_ID, limit = 50): Promise<SpotifyAlbumData[]> {
+  const token = await getAccessToken();
+  if (!token) return [];
+
+  try {
+    const response = await fetch(
+      `https://api.spotify.com/v1/artists/${artistId}/albums?include_groups=album,single&market=US&limit=${limit}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (!response.ok) {
+      const text = await response.text();
+      console.error('[spotify] Failed to fetch albums:', text);
+      return [];
+    }
+
+    const data = (await response.json()) as SpotifyAlbumsResponse;
+    const albums = (data.items || []).slice(0, limit);
+
+    return albums.map((album: SpotifyAlbumResponse) => ({
+      id: album.id,
+      name: album.name,
+      artist: album.artists?.[0]?.name || '',
+      releaseDate: album.release_date || '',
+      totalTracks: album.total_tracks || 0,
+      artwork: album.images?.[0]?.url || null,
+      externalUrl: album.external_urls?.spotify || null,
+    }));
+  } catch (error) {
+    console.error('[spotify] Error fetching albums:', error);
     return [];
   }
 }

@@ -13,7 +13,10 @@
             <a href="#" class="navigation__list__link" data-page="tour">TOUR</a>
             <a href="#" class="navigation__list__link" data-page="videos">VIDEOS</a>
             <a href="#" class="navigation__list__link" data-page="press">PRESS</a>
-            <a href="#" class="navigation__list__link" data-page="collaborations">COLLABORATIONS</a>
+            <a href="#" class="navigation__list__link" data-page="promo">PROMO</a>
+            <a href="#" class="navigation__list__link" data-page="shop">SHOP</a>
+            <a href="#" class="navigation__list__link" data-page="social">SOCIAL</a>
+            <a href="#" class="navigation__list__link" data-page="bio">BIO</a>
             <a href="#" class="navigation__list__link" data-page="info">INFO</a>
         </div>
         <div class="navigation__toggle">+</div>
@@ -37,9 +40,141 @@
         <!-- Music Page -->
         <div class="content" data-template="music" id="music" style="display: none;">
             <div class="music__section" id="releases">
+                <div class="music__header">
+                    <h2>Releases / Mixes</h2>
+                </div>
                 <div class="music__section__wrapper" id="musicGrid">
                     <div class="music__loading">Loading music...</div>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Promo Page -->
+        <div class="content" data-template="promo" id="promo" style="display: none;">
+            <div class="promo__section">
+                <div class="promo__header">
+                    <h2>Promo Tracks</h2>
+                </div>
+                <div class="promo__grid" id="promoPlayerContainer">
+                    <div class="promo__loading">Loading promo tracks...</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Promo Player Fixed Bottom -->
+        <div class="promo__player__bottom" id="promoPlayerBottom" style="display: none;">
+            <div class="promo__player__bottom__content">
+                <img class="promo__player__bottom__artwork" id="promoBottomArtwork" src="" alt="Track artwork">
+                <button class="promo__player__bottom__button promo__player__bottom__button--prev" id="promoBottomPrevButton">⏮</button>
+                <button class="promo__player__bottom__button promo__player__bottom__button--play" id="promoBottomPlayButton">▶</button>
+                <button class="promo__player__bottom__button" id="promoBottomNextButton">⏭</button>
+                <div class="promo__player__bottom__info">
+                    <div class="promo__player__bottom__title" id="promoBottomTitle">No track selected</div>
+                    <div class="promo__player__bottom__time">
+                        <span id="promoBottomCurrentTime">0:00</span> / <span id="promoBottomDuration">0:00</span>
+                    </div>
+                </div>
+                <div class="promo__player__bottom__progress">
+                    <input type="range" id="promoBottomProgressBar" min="0" max="100" value="0" step="0.1">
+                </div>
+                <button class="promo__player__bottom__button promo__player__bottom__button--close" id="promoBottomCloseButton">×</button>
+            </div>
+        </div>
+
+        <!-- Shop Page -->
+        <div class="content" data-template="shop" id="shop" style="display: none;">
+            <div class="shop__section">
+                <div class="shop__header">
+                    <h2>Shop</h2>
+                    <button class="shop__cart__button" id="shopCartButton">
+                        <svg class="shop__cart__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span class="shop__cart__count" id="shopCartCount">0</span>
+                    </button>
+                </div>
+                <div class="shop__grid" id="shopGrid">
+                    <div class="section__loading">Loading products...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Modal -->
+        <div class="shop__cart__modal" id="cartModal" style="display: none;">
+            <div class="shop__cart__modal__overlay"></div>
+            <div class="shop__cart__modal__content">
+                <div class="shop__cart__modal__header">
+                    <h3>Your Cart</h3>
+                    <button class="shop__cart__modal__close" id="cartModalClose">×</button>
+                </div>
+                <div class="shop__cart__modal__body" id="cartModalBody">
+                    <!-- Cart items will be inserted here -->
+                </div>
+                <div class="shop__cart__modal__footer">
+                    <div class="shop__cart__total">
+                        <span>Total:</span>
+                        <span class="shop__cart__total__price" id="cartTotalPrice">$0.00</span>
+                    </div>
+                    <button class="shop__cart__checkout__button" id="checkoutButton">Checkout</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout Modal -->
+        <div class="shop__checkout__modal" id="checkoutModal" style="display: none;">
+            <div class="shop__checkout__modal__overlay"></div>
+            <div class="shop__checkout__modal__content">
+                <div class="shop__checkout__modal__header">
+                    <h3>Checkout</h3>
+                    <button class="shop__checkout__modal__close" id="checkoutModalClose">×</button>
+                </div>
+                <div class="shop__checkout__modal__body">
+                    <form id="checkoutForm">
+                        <div class="shop__checkout__section">
+                            <h4>Contact Information</h4>
+                            <input type="email" placeholder="Email" required class="shop__checkout__input">
+                        </div>
+                        <div class="shop__checkout__section">
+                            <h4>Shipping Address</h4>
+                            <input type="text" placeholder="Full Name" required class="shop__checkout__input">
+                            <input type="text" placeholder="Address" required class="shop__checkout__input">
+                            <input type="text" placeholder="City" required class="shop__checkout__input">
+                            <div class="shop__checkout__row">
+                                <input type="text" placeholder="State" required class="shop__checkout__input">
+                                <input type="text" placeholder="ZIP Code" required class="shop__checkout__input">
+                            </div>
+                            <input type="text" placeholder="Country" required class="shop__checkout__input">
+                        </div>
+                        <div class="shop__checkout__section">
+                            <h4>Payment</h4>
+                            <input type="text" placeholder="Card Number" required class="shop__checkout__input">
+                            <div class="shop__checkout__row">
+                                <input type="text" placeholder="MM/YY" required class="shop__checkout__input">
+                                <input type="text" placeholder="CVV" required class="shop__checkout__input">
+                            </div>
+                        </div>
+                        <div class="shop__checkout__total">
+                            <span>Total:</span>
+                            <span class="shop__checkout__total__price" id="checkoutTotalPrice">$0.00</span>
+                        </div>
+                        <button type="submit" class="shop__checkout__submit__button">Complete Order</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Confirmation Modal -->
+        <div class="shop__confirmation__modal" id="confirmationModal" style="display: none;">
+            <div class="shop__confirmation__modal__overlay"></div>
+            <div class="shop__confirmation__modal__content">
+                <div class="shop__confirmation__icon">✓</div>
+                <h3>Order Confirmed!</h3>
+                <p>Thank you for your purchase. Your order has been confirmed.</p>
+                <p class="shop__confirmation__order__number">Order #<span id="confirmationOrderNumber"></span></p>
+                <p class="shop__confirmation__message">You will receive a confirmation email shortly.</p>
+                <button class="shop__confirmation__close__button" id="confirmationClose">Continue Shopping</button>
             </div>
         </div>
 
@@ -61,9 +196,9 @@
             <div class="videos__section">
                 <div class="videos__header">
                     <div class="videos__tabs">
-                        <span class="videos__tab active">Music Videos</span>
-                        <span class="videos__tab">PGTV</span>
-                        <span class="videos__tab">Sets</span>
+                        <span class="videos__tab">Music Videos</span>
+                        <span class="videos__tab">Reels</span>
+                        <span class="videos__tab active">Sets</span>
                         <span class="videos__tab">Other</span>
                     </div>
                 </div>
@@ -98,14 +233,33 @@
             </div>
         </div>
 
-        <!-- Collaborations Page -->
-        <div class="content" data-template="collaborations" id="collaborations" style="display: none;">
-            <div class="collaborations__section">
-                <div class="collaborations__header">
+        <!-- Social Page -->
+        <div class="content" data-template="social" id="social" style="display: none;">
+            <div class="social__section">
+                <div class="social__header">
                     <h2>Instagram Feed</h2>
                 </div>
-                <div class="collaborations__grid" id="instagramGrid">
+                <div class="social__grid" id="instagramGrid">
                     <div class="section__loading">Loading posts...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bio Page -->
+        <div class="content" data-template="bio" id="bio" style="display: none;">
+            <div class="info__section">
+                <div class="info__header">
+                    <h2>Biography</h2>
+                </div>
+                <div class="info__content" id="bioContent">
+                    <div class="info__image">
+                        <img src="/photos/SP1.JPG" alt="Silver Panda" loading="lazy" class="loaded" style="opacity: 1;">
+                    </div>
+                    <div class="info__text" id="bioText">
+                        <p>In an impressively short time, Silver Panda has garnered support from some of the biggest names in the industry, catapulting their profile to epic heights. Their collaborative work with artists like John Summit, Space Motion, and Sevenn has led to significant achievements, including their music reaching the #1 spot on Beatport's Overall Chart.</p>
+                        <p>In 2024, Silver Panda achieved a major milestone with the #1 top-selling melodic techno track on Beatport and claimed the #1 spot for track support in 2024 via 1001Tracklists stats. Their innovative sound has earned them a place among Beatport's top 10 melodic techno artists, with this notoriety fueling a world tour in 2024 featuring performances at clubs and festivals across the US, South America, Europe, and Asia.</p>
+                        <p>In addition to their creative output, Silver Panda has made strides in shaping the industry with their label, Panda Lab Records. The label rose to become the #4 melodic techno label on the Beatport charts in 2023, highlighting the duo's exceptional blend of creativity, collaboration, and entrepreneurship.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -114,20 +268,23 @@
         <div class="content" data-template="info" id="info" style="display: none;">
             <div class="info__section">
                 <div class="info__header">
-                    <h2>Biography / Contact</h2>
+                    <h2>Technical Information</h2>
                 </div>
-                <div class="info__content">
-                    <div class="info__image">
-                        <img id="infoImage" src="/photos/photo2.png" alt="Silver Panda">
-                    </div>
-                    <div class="info__text" id="infoText">
-                        <p>In an impressively short time, Silver Panda has garnered support from some of the biggest names in the industry, catapulting their profile to epic heights. Their collaborative work with artists like John Summit, Space Motion, and Sevenn has led to significant achievements, including their music reaching the #1 spot on Beatport's Overall Chart.</p>
-                        <p>In 2024, Silver Panda achieved a major milestone with the #1 top-selling melodic techno track on Beatport and claimed the #1 spot for track support in 2024 via 1001Tracklists stats. Their innovative sound has earned them a place among Beatport's top 10 melodic techno artists, with this notoriety fueling a world tour in 2024 featuring performances at clubs and festivals across the US, South America, Europe, and Asia.</p>
-                        <p>In addition to their creative output, Silver Panda has made strides in shaping the industry with their label, Panda Lab Records. The label rose to become the #4 melodic techno label on the Beatport charts in 2023, highlighting the duo's exceptional blend of creativity, collaboration, and entrepreneurship.</p>
-                    </div>
+                
+                <div class="info__rider" id="infoRider">
+                    <div class="info__loading">Loading rider information...</div>
                 </div>
-                <div class="info__footer">
-                    <div class="info__footer__credit">Design by ANGELO</div>
+                
+                <div class="info__management" id="infoManagement">
+                    <div class="info__loading">Loading management information...</div>
+                </div>
+                
+                <div class="info__downloads">
+                    <h3>Downloads</h3>
+                    <div class="info__downloads__list">
+                        <a href="/Silver Panda Technical Hospitality & Travel Rider 2025.pdf" download class="info__download__link">Technical Hospitality & Travel Rider 2025 (PDF)</a>
+                        <a href="/Silver Panda EPK 2025.pdf" download class="info__download__link">EPK 2025 (PDF)</a>
+                    </div>
                 </div>
             </div>
         </div>

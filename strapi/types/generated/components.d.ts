@@ -88,6 +88,33 @@ export interface IntegrationsSpotifyTrack extends Struct.ComponentSchema {
   };
 }
 
+export interface IntegrationsYoutubeVideo extends Struct.ComponentSchema {
+  collectionName: 'components_integrations_youtube_videos';
+  info: {
+    description: 'Seleciona um v\u00EDdeo do YouTube pelo ID ou URL e define fallback manual';
+    displayName: 'YouTube Video';
+  };
+  attributes: {
+    category: Schema.Attribute.Enumeration<
+      ['Music Videos', 'PGTV', 'Sets', 'Other']
+    > &
+      Schema.Attribute.DefaultTo<'Music Videos'>;
+    manualChannelTitle: Schema.Attribute.String;
+    manualDescription: Schema.Attribute.Text;
+    manualDuration: Schema.Attribute.String;
+    manualLikeCount: Schema.Attribute.BigInteger;
+    manualPublishedAt: Schema.Attribute.DateTime;
+    manualTags: Schema.Attribute.JSON;
+    manualThumbnailUrl: Schema.Attribute.String;
+    manualTitle: Schema.Attribute.String;
+    manualViewCount: Schema.Attribute.BigInteger;
+    notes: Schema.Attribute.Text;
+    thumbnail: Schema.Attribute.Media<'images'>;
+    videoId: Schema.Attribute.String;
+    youtubeUrl: Schema.Attribute.String;
+  };
+}
+
 export interface ParagraphSchema extends Struct.ComponentSchema {
   collectionName: 'components_paragraph_paragraphs';
   info: {
@@ -107,6 +134,7 @@ declare module '@strapi/strapi' {
       'integrations.instagram-post': IntegrationsInstagramPost;
       'integrations.soundcloud-track': IntegrationsSoundcloudTrack;
       'integrations.spotify-track': IntegrationsSpotifyTrack;
+      'integrations.youtube-video': IntegrationsYoutubeVideo;
       'paragraph.schema': ParagraphSchema;
     }
   }

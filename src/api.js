@@ -63,6 +63,44 @@ export class SpotifyAPI {
       throw error;
     }
   }
+
+  static async getAlbumsFormatted(limit = 50) {
+    try {
+      const response = await fetch(`${API_BASE}/spotify/albums?limit=${limit}&offset=0`);
+      if (!response.ok) {
+        console.warn('Failed to fetch albums from API, will try JSON fallback');
+        return [];
+      }
+      const data = await response.json();
+      const albums = data.items || [];
+      
+      const formatted = albums.map((album) => {
+        // Pegar a maior imagem disponível (geralmente a primeira é a maior)
+        const artwork = album.images && album.images.length > 0 
+          ? album.images[0].url 
+          : null;
+        
+        console.log(`[SpotifyAPI] Album: ${album.name}, Artwork: ${artwork ? '✅' : '❌'}`);
+        
+        return {
+          id: album.id,
+          name: album.name,
+          artist: album.artists?.[0]?.name || 'Silver Panda',
+          releaseDate: album.release_date || '',
+          artwork: artwork,
+          externalUrl: album.external_urls?.spotify || null,
+          totalTracks: album.total_tracks || 0,
+          provider: 'spotify',
+        };
+      });
+      
+      console.log(`[SpotifyAPI] Formatted ${formatted.length} albums`);
+      return formatted;
+    } catch (error) {
+      console.error('Error fetching formatted albums:', error);
+      return [];
+    }
+  }
 }
 
 export class SoundCloudAPI {

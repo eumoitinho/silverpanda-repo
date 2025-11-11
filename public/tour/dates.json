@@ -1,0 +1,104 @@
+{
+  "source": "Eventbrite / Songkick",
+  "items": [
+    {
+      "date": "2025-12-06",
+      "city": "Toronto",
+      "country": "Canada",
+      "venue": "TBA",
+      "link": "https://www.eventbrite.ca/e/silver-panda-toronto-tickets-1581851463309?aff=aff0songkick&sk_eid=42820519&uid="
+    },
+    {
+      "date": "2025-12-05",
+      "city": "Ottawa",
+      "country": "Canada",
+      "venue": "Gridwrks",
+      "link": "https://www.eventbrite.ca/e/silver-panda-ottawa-tickets-1583065143459?aff=aff0songkick&sk_eid=42820837&uid="
+    },
+    {
+      "date": "2025-11-14",
+      "city": "Barcelona",
+      "country": "Spain",
+      "venue": "Parc Del Forum",
+      "link": null
+    },
+    {
+      "date": "2025-10-16",
+      "city": "Miami",
+      "country": "USA",
+      "venue": "III Points Music Festival",
+      "link": null
+    },
+    {
+      "date": "2025-10-11",
+      "city": "Ibiza",
+      "country": "Spain",
+      "venue": "[UNVRS] Closing Party",
+      "link": null
+    },
+    {
+      "date": "2025-10-04",
+      "city": "Paris",
+      "country": "France",
+      "venue": null,
+      "link": null
+    },
+    {
+      "date": "2025-08-30",
+      "city": "San Francisco",
+      "country": "USA",
+      "venue": "Halcyon",
+      "link": null
+    },
+    {
+      "date": "2025-08-08",
+      "city": "Austin",
+      "country": "USA",
+      "venue": "Kingdom",
+      "link": null
+    },
+    {
+      "date": "2025-07-19",
+      "city": "Dallas",
+      "country": "USA",
+      "venue": "SILO",
+      "link": null
+    },
+    {
+      "date": "2025-05-31",
+      "city": "Mexico City",
+      "country": "Mexico",
+      "venue": "LooLoo",
+      "link": null
+    },
+    {
+      "date": "2025-05-17",
+      "city": "Brooklyn",
+      "country": "USA",
+      "venue": "99 Scott",
+      "link": null
+    },
+    {
+      "date": "2025-05-03",
+      "city": "Santiago",
+      "country": "Chile",
+      "venue": "BAUM Festival 2025 - Espacio Riesco",
+      "link": null
+    },
+    {
+      "date": "2025-02-28",
+      "city": "Las Vegas",
+      "country": "USA",
+      "venue": "Discopussy",
+      "link": null
+    },
+    {
+      "date": "2025-02-01",
+      "city": "Los Angeles",
+      "country": "USA",
+      "venue": "Exchange LA",
+      "link": null
+    }
+  ]
+}
+
