@@ -28,6 +28,12 @@
         <div class="content" data-template="home" id="home" style="display: flex;">
             <div class="home__hero">
                 <div class="home__hero__background" id="heroBackground"></div>
+                <video class="home__hero__video" id="heroVideo" autoplay muted loop playsinline>
+                    <source src="/videos/silverpanda_videobg_1.mp4" type="video/mp4">
+                </video>
+                <button class="home__hero__toggle" id="heroToggle" aria-label="Toggle between video and photo">
+                    <span class="home__hero__toggle__icon">📷</span>
+                </button>
                 <div class="home__hero__title" style="cursor: pointer;" onclick="app.navigateToPage('home')">
                     <img id="heroLogo" src="" alt="Silver Panda Logo" class="home__hero__logo" style="display: none;">
                     <h1 id="heroTitle" class="home__hero__title-fallback">Silver Panda</h1>

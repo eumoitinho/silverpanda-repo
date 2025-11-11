@@ -31,6 +31,7 @@ class App {
     this.setupVideoModal();
     this.setupImageHandling();
     this.setupVideoTabs();
+    this.setupHeroToggle();
     this.handleInitialRoute();
     this.loadMusicData();
   }
@@ -205,16 +206,25 @@ class App {
     // Usar foto da pasta photos como background padrão se não houver background do Strapi
     if (heroBackgroundEl) {
       if (backgroundUrl) {
-        // Set background immediately and show it
+        // Set background immediately (visibility controlled by toggle)
         console.log('[renderHero] Setting background image:', backgroundUrl);
         heroBackgroundEl.style.setProperty('background-image', `url("${backgroundUrl}")`, 'important');
         heroBackgroundEl.style.setProperty('background-size', 'cover', 'important');
         heroBackgroundEl.style.setProperty('background-position', 'center', 'important');
         heroBackgroundEl.style.setProperty('background-repeat', 'no-repeat', 'important');
-        heroBackgroundEl.style.setProperty('visibility', 'visible', 'important');
-        heroBackgroundEl.style.setProperty('z-index', '0', 'important');
         heroBackgroundEl.classList.add('loaded');
-        heroBackgroundEl.style.setProperty('opacity', '1', 'important');
+
+        // Respect current toggle state - don't override visibility
+        const heroVideo = document.getElementById('heroVideo');
+        if (heroVideo && !heroVideo.classList.contains('hidden')) {
+          // Video is showing, so hide background
+          heroBackgroundEl.classList.add('hidden');
+        } else {
+          // Photo should be showing
+          heroBackgroundEl.classList.remove('hidden');
+          heroBackgroundEl.style.setProperty('visibility', 'visible', 'important');
+          heroBackgroundEl.style.setProperty('opacity', '1', 'important');
+        }
 
         // Preload image to check if it loads successfully
         const img = new Image();
@@ -929,6 +939,52 @@ class App {
     if (activeTab) {
       this.currentVideoCategory = activeTab.textContent.trim();
     }
+  }
+
+  setupHeroToggle() {
+    const toggleButton = document.getElementById('heroToggle');
+    const heroVideo = document.getElementById('heroVideo');
+    const heroBackground = document.getElementById('heroBackground');
+    const toggleIcon = toggleButton?.querySelector('.home__hero__toggle__icon');
+
+    if (!toggleButton || !heroVideo || !heroBackground) return;
+
+    // Start with video visible by default
+    this.heroShowingVideo = true;
+    heroVideo.classList.remove('hidden');
+    heroBackground.classList.add('hidden');
+    if (toggleIcon) toggleIcon.textContent = '📷';
+
+    toggleButton.addEventListener('click', () => {
+      this.heroShowingVideo = !this.heroShowingVideo;
+
+      if (this.heroShowingVideo) {
+        // Show video, hide photo
+        heroVideo.classList.remove('hidden');
+        heroBackground.classList.add('hidden');
+        if (toggleIcon) toggleIcon.textContent = '📷';
+        
+        // Play video if paused
+        if (heroVideo.paused) {
+          heroVideo.play().catch((error) => {
+            console.warn('Error playing video:', error);
+          });
+        }
+      } else {
+        // Show photo, hide video
+        heroVideo.classList.add('hidden');
+        heroBackground.classList.remove('hidden');
+        if (toggleIcon) toggleIcon.textContent = '▶️';
+        
+        // Pause video to save resources
+        heroVideo.pause();
+      }
+    });
+
+    // Ensure video plays when page loads
+    heroVideo.play().catch((error) => {
+      console.warn('Error autoplaying video:', error);
+    });
   }
 
   filterVideosByCategory(category) {
